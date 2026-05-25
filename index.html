@@ -1,12 +1,896 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Lunbing Chen</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Lunbing Chen | Bio-inspired Flight and Dynamic Soaring</title>
+
+  <meta name="description" content="Lunbing Chen is a Ph.D. candidate at Shanghai Jiao Tong University working on closed-loop dynamic soaring, bio-inspired flight, vortex dynamics, and autonomous control." />
+  <meta name="keywords" content="Lunbing Chen, dynamic soaring, bio-inspired flight, flow-structure interaction, vortex dynamics, reinforcement learning, autonomous flight, Shanghai Jiao Tong University" />
+  <meta name="author" content="Lunbing Chen" />
+
+  <style>
+    :root {
+      --bg: #ffffff;
+      --bg-soft: #f6f8fb;
+      --text: #1d2430;
+      --muted: #5e6a7d;
+      --line: #e1e7ef;
+      --accent: #1f5f99;
+      --accent-dark: #143e63;
+      --accent-soft: #eaf3fb;
+      --card: #ffffff;
+      --shadow: 0 12px 30px rgba(20, 40, 70, 0.08);
+      --max-width: 1180px;
+      --sidebar-width: 305px;
+      --radius: 16px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, "Noto Sans", sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.62;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: var(--accent-dark);
+      text-decoration: underline;
+    }
+
+    .page {
+      display: grid;
+      grid-template-columns: var(--sidebar-width) minmax(0, 1fr);
+      max-width: var(--max-width);
+      margin: 0 auto;
+      min-height: 100vh;
+    }
+
+    aside {
+      border-right: 1px solid var(--line);
+      padding: 36px 26px;
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      align-self: start;
+      background: #fff;
+    }
+
+    main {
+      padding: 34px 44px 72px;
+      min-width: 0;
+    }
+
+    .avatar {
+      width: 170px;
+      height: 170px;
+      border-radius: 50%;
+      object-fit: cover;
+      display: block;
+      margin: 0 auto 22px;
+      background: linear-gradient(135deg, #dbe9f6, #f3f7fb);
+      border: 1px solid var(--line);
+    }
+
+    .avatar-fallback {
+      width: 170px;
+      height: 170px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 22px;
+      background: linear-gradient(135deg, #dbe9f6, #f3f7fb);
+      border: 1px solid var(--line);
+      color: var(--accent-dark);
+      font-size: 52px;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    .name {
+      text-align: center;
+      font-size: 1.72rem;
+      font-weight: 750;
+      margin: 0;
+      color: var(--accent-dark);
+      line-height: 1.18;
+    }
+
+    .role {
+      text-align: center;
+      margin: 8px 0 0;
+      color: var(--muted);
+      font-size: 0.98rem;
+    }
+
+    .affiliation {
+      text-align: center;
+      margin: 6px 0 18px;
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    .tagline {
+      margin: 18px 0 22px;
+      padding: 14px 14px;
+      background: var(--accent-soft);
+      border-radius: 14px;
+      color: #244864;
+      font-size: 0.94rem;
+    }
+
+    .contact-list {
+      list-style: none;
+      padding: 0;
+      margin: 22px 0;
+      font-size: 0.95rem;
+    }
+
+    .contact-list li {
+      margin: 9px 0;
+      display: flex;
+      align-items: flex-start;
+      gap: 9px;
+      color: var(--muted);
+    }
+
+    .contact-list .icon {
+      width: 20px;
+      text-align: center;
+      color: var(--accent);
+      flex: 0 0 20px;
+    }
+
+    .sidebar-buttons {
+      display: grid;
+      gap: 10px;
+      margin-top: 22px;
+    }
+
+    .button {
+      display: block;
+      text-align: center;
+      padding: 10px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      color: var(--accent-dark);
+      font-weight: 650;
+      font-size: 0.94rem;
+      background: #fff;
+    }
+
+    .button.primary {
+      color: #fff;
+      background: var(--accent);
+      border-color: var(--accent);
+    }
+
+    .button:hover {
+      text-decoration: none;
+      transform: translateY(-1px);
+      box-shadow: var(--shadow);
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 18px;
+      padding-bottom: 18px;
+      margin-bottom: 20px;
+      border-bottom: 1px solid var(--line);
+      font-size: 0.96rem;
+      position: sticky;
+      top: 0;
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(8px);
+      z-index: 10;
+    }
+
+    nav a {
+      color: var(--muted);
+      font-weight: 650;
+    }
+
+    nav a:hover {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .hero {
+      padding: 26px 0 22px;
+    }
+
+    .hero h1 {
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      line-height: 1.08;
+      margin: 0 0 16px;
+      color: var(--accent-dark);
+      letter-spacing: -0.03em;
+    }
+
+    .hero p {
+      font-size: 1.12rem;
+      color: var(--muted);
+      max-width: 780px;
+      margin: 0 0 16px;
+    }
+
+    .highlight {
+      color: var(--accent-dark);
+      font-weight: 700;
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 22px;
+    }
+
+    .chip {
+      background: var(--bg-soft);
+      border: 1px solid var(--line);
+      color: #39485d;
+      border-radius: 999px;
+      padding: 7px 11px;
+      font-size: 0.9rem;
+    }
+
+    section {
+      margin-top: 44px;
+      scroll-margin-top: 80px;
+    }
+
+    section h2 {
+      font-size: 1.58rem;
+      color: var(--accent-dark);
+      margin: 0 0 18px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--line);
+    }
+
+    section h3 {
+      font-size: 1.08rem;
+      margin: 0 0 8px;
+      color: var(--text);
+    }
+
+    .lead {
+      color: var(--muted);
+      font-size: 1.04rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 18px 18px;
+      box-shadow: 0 6px 20px rgba(20, 40, 70, 0.045);
+    }
+
+    .card h3 {
+      color: var(--accent-dark);
+    }
+
+    .card p {
+      margin: 8px 0 0;
+      color: var(--muted);
+    }
+
+    .project-meta {
+      color: var(--muted);
+      font-size: 0.92rem;
+      font-style: italic;
+      margin: 4px 0 10px;
+    }
+
+    .project ul {
+      margin: 10px 0 0;
+      padding-left: 1.25em;
+      color: var(--muted);
+    }
+
+    .pub-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      counter-reset: pubs;
+    }
+
+    .pub {
+      counter-increment: pubs;
+      display: grid;
+      grid-template-columns: 44px minmax(0, 1fr);
+      gap: 12px;
+      padding: 15px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .pub:last-child {
+      border-bottom: none;
+    }
+
+    .pub::before {
+      content: "[" counter(pubs) "]";
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .pub-title {
+      font-weight: 720;
+      color: var(--text);
+    }
+
+    .pub-authors {
+      color: var(--muted);
+      margin-top: 3px;
+    }
+
+    .pub-venue {
+      color: var(--muted);
+      margin-top: 3px;
+    }
+
+    .pub-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 8px;
+    }
+
+    .small-link {
+      display: inline-flex;
+      align-items: center;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 4px 9px;
+      font-size: 0.84rem;
+      color: var(--accent-dark);
+      background: var(--bg-soft);
+    }
+
+    .small-link:hover {
+      text-decoration: none;
+      background: var(--accent-soft);
+    }
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 160px minmax(0, 1fr);
+      gap: 18px;
+      padding: 16px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .timeline-item:last-child {
+      border-bottom: none;
+    }
+
+    .time {
+      color: var(--muted);
+      font-weight: 650;
+    }
+
+    .skills {
+      display: grid;
+      gap: 10px;
+    }
+
+    .skill-row {
+      display: grid;
+      grid-template-columns: 210px minmax(0, 1fr);
+      gap: 12px;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .skill-row:last-child {
+      border-bottom: none;
+    }
+
+    .skill-title {
+      font-weight: 700;
+      color: var(--accent-dark);
+    }
+
+    .skill-text {
+      color: var(--muted);
+    }
+
+    .footer {
+      margin-top: 60px;
+      padding-top: 18px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .note {
+      color: var(--muted);
+      font-size: 0.92rem;
+      background: var(--bg-soft);
+      border: 1px solid var(--line);
+      padding: 12px 14px;
+      border-radius: 12px;
+    }
+
+    @media (max-width: 920px) {
+      .page {
+        grid-template-columns: 1fr;
+      }
+
+      aside {
+        position: relative;
+        height: auto;
+        border-right: none;
+        border-bottom: 1px solid var(--line);
+      }
+
+      main {
+        padding: 26px 24px 60px;
+      }
+
+      nav {
+        position: relative;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .timeline-item {
+        grid-template-columns: 1fr;
+        gap: 4px;
+      }
+
+      .skill-row {
+        grid-template-columns: 1fr;
+        gap: 4px;
+      }
+    }
+
+    @media (max-width: 520px) {
+      main {
+        padding: 22px 18px 50px;
+      }
+
+      aside {
+        padding: 28px 20px;
+      }
+
+      .pub {
+        grid-template-columns: 1fr;
+        gap: 4px;
+      }
+
+      .pub::before {
+        margin-bottom: -4px;
+      }
+    }
+
+    @media print {
+      aside, nav, .sidebar-buttons {
+        display: none;
+      }
+
+      .page {
+        display: block;
+        max-width: 100%;
+      }
+
+      main {
+        padding: 0;
+      }
+
+      a {
+        color: #000;
+      }
+
+      body {
+        font-size: 11pt;
+      }
+    }
+  </style>
 </head>
+
 <body>
-  <h1>Lunbing Chen</h1>
-  <p>Ph.D. Candidate in Aeronautics and Astronautics</p>
-  <p>Bio-inspired Flight | Dynamic Soaring | Flow-Structure Interaction | Autonomous Control</p>
+  <div class="page">
+    <aside>
+      <!-- Replace assets/profile.jpg with your own image.
+           If you do not want a photo, remove the img tag and keep the fallback div. -->
+      <!-- <img class="avatar" src="assets/profile.jpg" alt="Lunbing Chen" /> -->
+      <div class="avatar-fallback">LC</div>
+
+      <h1 class="name">Lunbing Chen</h1>
+      <p class="role">Ph.D. Candidate</p>
+      <p class="affiliation">J. C. Wu Center for Aerodynamics<br />Shanghai Jiao Tong University</p>
+
+      <div class="tagline">
+        I study closed-loop dynamic soaring and bio-inspired flight in complex flows, combining fluid mechanics, animal flight, reinforcement learning, and autonomous aircraft systems.
+      </div>
+
+      <ul class="contact-list">
+        <li><span class="icon">📍</span><span>Shanghai, China</span></li>
+        <li><span class="icon">✉️</span><span><a href="mailto:caesar01@sjtu.edu.cn">caesar01@sjtu.edu.cn</a></span></li>
+        <li><span class="icon">🌐</span><span><a href="https://lunbingchen.github.io">lunbingchen.github.io</a></span></li>
+        <li><span class="icon">🔬</span><span><a href="https://www.researchgate.net/profile/Lunbing_Chen">ResearchGate</a></span></li>
+        <li><span class="icon">🎓</span><span><a href="https://scholar.google.com/">Google Scholar</a></span></li>
+        <li><span class="icon">🧬</span><span><a href="https://orcid.org/">ORCID</a></span></li>
+        <li><span class="icon">💻</span><span><a href="https://github.com/lunbingchen">GitHub</a></span></li>
+        <li><span class="icon">in</span><span><a href="https://www.linkedin.com/in/lunbing-chen-7ba91b392/">LinkedIn</a></span></li>
+      </ul>
+
+      <div class="sidebar-buttons">
+        <a class="button primary" href="assets/Lunbing_Chen_CV.pdf">Download CV</a>
+        <a class="button" href="#publications">Publications</a>
+        <a class="button" href="#research">Research</a>
+      </div>
+    </aside>
+
+    <main>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#research">Research</a>
+        <a href="#publications">Publications</a>
+        <a href="#education">Education</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <header class="hero" id="about">
+        <h1>Bio-inspired flight, dynamic soaring, and autonomous control in complex flows.</h1>
+        <p>
+          I am a Ph.D. candidate in aeronautics and astronautics at
+          <span class="highlight">Shanghai Jiao Tong University</span>.
+          My research focuses on <span class="highlight">closed-loop dynamic soaring</span>
+          and <span class="highlight">bio-inspired flight</span> in environmental flows.
+        </p>
+        <p>
+          My current thesis develops dynamic soaring as a feedback-driven
+          energy-harvesting navigation problem, connecting passive flow mechanisms,
+          biological flight strategies, step-level feedback decision-making, and closed-loop
+          flight implementation.
+        </p>
+
+        <div class="chips">
+          <span class="chip">Dynamic soaring</span>
+          <span class="chip">Bio-inspired flight</span>
+          <span class="chip">Vortex dynamics</span>
+          <span class="chip">Flow–structure interaction</span>
+          <span class="chip">Reinforcement learning</span>
+          <span class="chip">Autonomous flight</span>
+        </div>
+      </header>
+
+      <section id="research">
+        <h2>Research</h2>
+
+        <p class="lead">
+          My work asks how flyers exploit environmental flows for robust and energy-efficient flight.
+          I study this question across passive flow mechanisms, biological flight strategies,
+          feedback decision-making, and autonomous aircraft implementation.
+        </p>
+
+        <div class="grid">
+          <article class="card project">
+            <h3>Closed-loop Dynamic Soaring and Energy-harvesting Navigation</h3>
+            <div class="project-meta">Dynamic soaring · optimal control · reinforcement learning · autonomous flight</div>
+            <p>
+              I investigate dynamic soaring as a closed-loop energy-harvesting navigation problem in environmental shear flows.
+              This work connects optimal-control models, biological flight trajectories, and reinforcement-learning policies for robust target-directed flight.
+            </p>
+            <ul>
+              <li>Formulated dynamic soaring as a trade-off between energy harvesting and directional progress.</li>
+              <li>Built 3-DOF gliding-flight models and numerical optimization frameworks for shear-flow flight.</li>
+              <li>Developed deep reinforcement-learning environments for step-level dynamic-soaring navigation.</li>
+              <li>Identified feedback structures that coordinate turning, vertical motion, and energy management.</li>
+            </ul>
+          </article>
+
+          <article class="card project">
+            <h3>Passive Flow Mechanisms for Robust Gliding</h3>
+            <div class="project-meta">Flow–structure interaction · passive reconfiguration · turbulence · aerodynamic sensitivity</div>
+            <p>
+              I study how passive structural and aerodynamic mechanisms improve flight robustness in unsteady and disturbed flows.
+              This work connects canonical experiments with biological wing aerodynamics to understand how flyers reduce load peaks
+              and attenuate disturbance amplification before active control is required.
+            </p>
+            <ul>
+              <li>Investigated accelerating reconfigurable circular plates as a model for passive load regulation.</li>
+              <li>Identified load-shifting mechanisms in which flexible structures reduce peak loads and reshape post-peak force histories.</li>
+              <li>Compared avian wings with engineered airfoil wings in turbulent inflow to quantify aerodynamic sensitivity and passive stability.</li>
+            </ul>
+          </article>
+
+          <article class="card project">
+            <h3>Unsteady Vortex Dynamics and Force Generation</h3>
+            <div class="project-meta">Vortex rings · impulse theory · accelerating bodies · PIV · low-order force modeling</div>
+            <p>
+              I investigate vortex-ring growth, impulse-based force generation, and low-order modeling of starting and accelerating flows.
+              This work provides the fluid-mechanics foundation for interpreting transient force histories in separated flows.
+            </p>
+            <ul>
+              <li>Conducted force measurements on accelerating plates and related unsteady bluff-body flows.</li>
+              <li>Used time-resolved PIV to characterize vortex-ring formation, vortex growth, and wake evolution.</li>
+              <li>Connected transient force histories with circulation growth, vortex area evolution, and spatial vorticity distribution.</li>
+            </ul>
+          </article>
+
+          <article class="card project">
+            <h3>Closed-loop Dynamic Soaring Aircraft Development</h3>
+            <div class="project-meta">UAV platform · state estimation · flight control · system integration</div>
+            <p>
+              I am developing a closed-loop dynamic-soaring aircraft platform that integrates sensing, decision-making, and execution.
+              The goal is to translate biological and computational dynamic-soaring principles into an autonomous flight system.
+            </p>
+            <ul>
+              <li>Designed a perception–decision–execution architecture for wind-relative energy management.</li>
+              <li>Integrated onboard sensing for position, attitude, airspeed, altitude, and wind-relative state estimation.</li>
+              <li>Implemented decision and control modules for step-level maneuver selection, attitude tracking, safety protection, and mode switching.</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section id="publications">
+        <h2>Publications</h2>
+
+        <h3>First-author / Corresponding-author Publications</h3>
+
+        <ol class="pub-list">
+          <li class="pub">
+            <div>
+              <div class="pub-title">Optimal dynamic soaring trades off energy harvest and directional flight</div>
+              <div class="pub-authors"><strong>Lunbing Chen</strong>, Yufei Yin, Yang Xiang, Suyang Qin, and Hong Liu</div>
+              <div class="pub-venue"><em>iScience</em> 28.6, 2025.</div>
+              <div class="pub-links">
+                <a class="small-link" href="https://doi.org/10.1016/j.isci.2025.112540">DOI</a>
+              </div>
+            </div>
+          </li>
+
+          <li class="pub">
+            <div>
+              <div class="pub-title">Learning step-level dynamic soaring in shear flow</div>
+              <div class="pub-authors"><strong>Lunbing Chen</strong>, Jixin Lu, Yufei Yin, Jinpeng Huang, Yong Chen, Yang Xiang, and Hong Liu</div>
+              <div class="pub-venue">Under external review at <em>Nature Communications</em>, 2026. arXiv: 2604.12413.</div>
+              <div class="pub-links">
+                <a class="small-link" href="https://doi.org/10.48550/arXiv.2604.12413">arXiv</a>
+              </div>
+            </div>
+          </li>
+
+          <li class="pub">
+            <div>
+              <div class="pub-title">Reduced aerodynamic sensitivity enables disturbance-resilient flight</div>
+              <div class="pub-authors"><strong>Lunbing Chen</strong>, Suyang Qin, Qilin Wu, Jinpeng Huang, Yufei Yin, Yang Xiang, and Hong Liu</div>
+              <div class="pub-venue">Submitted to <em>Cell Reports Physical Science</em>, 2025. arXiv: 2507.14550.</div>
+              <div class="pub-links">
+                <a class="small-link" href="https://doi.org/10.48550/arXiv.2507.14550">arXiv</a>
+              </div>
+            </div>
+          </li>
+
+          <li class="pub">
+            <div>
+              <div class="pub-title">On the load-shifting phenomenon of accelerating reconfigurable circular plates</div>
+              <div class="pub-authors"><strong>Lunbing Chen</strong>, Zhuoqi Li, Qilin Wu, Yufei Yin, Yang Xiang, and Hong Liu</div>
+              <div class="pub-venue"><em>Journal of Fluid Mechanics</em> 1029, A8, 2026.</div>
+              <div class="pub-links">
+                <a class="small-link" href="https://doi.org/10.1017/jfm.2026.11165">DOI</a>
+              </div>
+            </div>
+          </li>
+
+          <li class="pub">
+            <div>
+              <div class="pub-title">Static Geometric Configuration and Vortex Ring Reshaping Dominate the Load-shifting of Accelerating Plates</div>
+              <div class="pub-authors">Jinpeng Huang, Qilin Wu, <strong>Lunbing Chen*</strong>, Yang Xiang, and Hong Liu</div>
+              <div class="pub-venue">Submitted to <em>Physics of Fluids</em>, 2026. *Corresponding author.</div>
+            </div>
+          </li>
+
+          <li class="pub">
+            <div>
+              <div class="pub-title">Shape Independence and Aerodynamic Truncation Effect of Low-Aspect-Ratio Accelerating Plates</div>
+              <div class="pub-authors">Qilin Wu, <strong>Lunbing Chen*</strong>, Yang Xiang, and Hong Liu</div>
+              <div class="pub-venue">In preparation for <em>Physical Review Fluids</em>, 2026. *Corresponding author.</div>
+            </div>
+          </li>
+
+          <li class="pub">
+            <div>
+              <div class="pub-title">High-Dimensional Uncertainty Quantification of Thermochemical Ablation for C/C Throat Insert</div>
+              <div class="pub-authors"><strong>Lunbing Chen</strong>, Na Sun, Linying Li, and Bin Zhang</div>
+              <div class="pub-venue"><em>Journal of Propulsion Technology</em> 43.3, 266–275, 2022. In Chinese.</div>
+              <div class="pub-links">
+                <a class="small-link" href="https://doi.org/10.13675/j.cnki.tjjs.200583">DOI</a>
+              </div>
+            </div>
+          </li>
+        </ol>
+
+        <h3 style="margin-top: 30px;">Selected Co-authored Publications</h3>
+
+        <ol class="pub-list">
+          <li class="pub">
+            <div>
+              <div class="pub-title">Flight Envelope and Energy Equilibrium Strategy of Sailplanes to Perform Dynamic Soaring</div>
+              <div class="pub-authors">Yufei Yin, <strong>Lunbing Chen</strong>, Yang Xiang, Suyang Qin, and Hong Liu</div>
+              <div class="pub-venue">International Conference on Aerospace System Science and Engineering, Springer, 2024.</div>
+              <div class="pub-links">
+                <a class="small-link" href="https://doi.org/10.1007/978-981-96-2440-9_3">DOI</a>
+              </div>
+            </div>
+          </li>
+
+          <li class="pub">
+            <div>
+              <div class="pub-title">Geese achieve stationary takeoff via synergistic wing kinematics and enhanced aerodynamics</div>
+              <div class="pub-authors">Jinpeng Huang, Yang Xiang, <strong>Lunbing Chen</strong>, Suyang Qin, Jixin Lu, Sen Ye, Xiaobin Huang, Yong Chen, and Hong Liu</div>
+              <div class="pub-venue">Under review in <em>Science Advances</em>, 2025. arXiv: 2512.20894.</div>
+              <div class="pub-links">
+                <a class="small-link" href="https://doi.org/10.48550/arXiv.2512.20894">arXiv</a>
+              </div>
+            </div>
+          </li>
+
+          <li class="pub">
+            <div>
+              <div class="pub-title">Two independent mechanisms with distinct laws for the generation of drag force on accelerating plates</div>
+              <div class="pub-authors">Zhuoqi Li, <strong>Lunbing Chen</strong>, Yang Xiang, Hong Liu, and Fuxin Wang</div>
+              <div class="pub-venue"><em>Physics of Fluids</em> 36.10, 2024.</div>
+              <div class="pub-links">
+                <a class="small-link" href="https://doi.org/10.1063/5.0227258">DOI</a>
+              </div>
+            </div>
+          </li>
+
+          <li class="pub">
+            <div>
+              <div class="pub-title">Evolution and dynamics of vortex rings in a confined and asymmetric region</div>
+              <div class="pub-authors">Yufei Yin, <strong>Lunbing Chen</strong>, Liwei Hu, Yang Xiang, Yumin Zhong, and Hong Liu</div>
+              <div class="pub-venue"><em>Physics of Fluids</em> 37.12, 2025. Editor's pick, Scilight.</div>
+              <div class="pub-links">
+                <a class="small-link" href="https://doi.org/10.1063/5.0304637">DOI</a>
+              </div>
+            </div>
+          </li>
+
+          <li class="pub">
+            <div>
+              <div class="pub-title">Study on the structural characteristics of strong radial swirl flow based on Lagrangian and Eulerian vortex identification methods</div>
+              <div class="pub-authors">Bin Yu, <strong>Lunbing Chen</strong>, Zhen Wang, Xunchen Liu, Bin Zhang, and Hong Liu</div>
+              <div class="pub-venue">CCTAM 2021. In Chinese.</div>
+            </div>
+          </li>
+        </ol>
+      </section>
+
+      <section id="education">
+        <h2>Education</h2>
+
+        <div class="timeline-item">
+          <div class="time">2022–Present</div>
+          <div>
+            <h3>Ph.D. Candidate, Shanghai Jiao Tong University</h3>
+            <p>
+              J. C. Wu Center for Aerodynamics, School of Aeronautics and Astronautics, Shanghai, China.
+            </p>
+            <p>
+              Dissertation topic: <em>Closed-loop Dynamic Soaring in the Field: Mechanics and Implementation</em>.
+              Advisors: Prof. Yang Xiang and Prof. Hong Liu.
+            </p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="time">2018–2022</div>
+          <div>
+            <h3>B.Eng., Shanghai Jiao Tong University</h3>
+            <p>
+              School of Aeronautics and Astronautics, Shanghai, China.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="skills">
+        <h2>Technical Skills</h2>
+
+        <div class="skills">
+          <div class="skill-row">
+            <div class="skill-title">Programming</div>
+            <div class="skill-text">Python, MATLAB, Fortran, Java, LaTeX, Git</div>
+          </div>
+
+          <div class="skill-row">
+            <div class="skill-title">Numerical Modeling</div>
+            <div class="skill-text">ODE integration, direct collocation, trajectory optimization, nonlinear dynamics, low-order modeling</div>
+          </div>
+
+          <div class="skill-row">
+            <div class="skill-title">Machine Learning and Control</div>
+            <div class="skill-text">Deep reinforcement learning, Gym-style simulation environments, feedback policy analysis, autonomous control</div>
+          </div>
+
+          <div class="skill-row">
+            <div class="skill-title">Experimental Fluid Mechanics</div>
+            <div class="skill-text">Force measurement, towing-tank experiments, wind-tunnel experiments, PIV/SPIV, high-speed imaging</div>
+          </div>
+
+          <div class="skill-row">
+            <div class="skill-title">Aerodynamics and Flight Mechanics</div>
+            <div class="skill-text">3/6-DOF glider dynamics, stability analysis, unsteady aerodynamics</div>
+          </div>
+
+          <div class="skill-row">
+            <div class="skill-title">Data Analysis</div>
+            <div class="skill-text">Signal processing, uncertainty analysis, trajectory analysis, image processing, statistical visualization</div>
+          </div>
+        </div>
+      </section>
+
+      <section id="cv">
+        <h2>CV</h2>
+
+        <p>
+          A full academic CV is available here:
+          <a href="assets/Lunbing_Chen_CV.pdf">Lunbing_Chen_CV.pdf</a>.
+        </p>
+
+        <p class="note">
+          To enable this link, place your CV PDF at
+          <code>assets/Lunbing_Chen_CV.pdf</code> in the GitHub repository.
+          You can also replace the path with <code>main.pdf</code> if you keep the PDF in the repository root.
+        </p>
+      </section>
+
+      <section id="contact">
+        <h2>Contact</h2>
+
+        <p>
+          I am interested in discussions and collaborations on bio-inspired flight, dynamic soaring,
+          unsteady aerodynamics, flow--structure interaction, and autonomous energy-harvesting flight systems.
+        </p>
+
+        <ul>
+          <li>Email: <a href="mailto:caesar01@sjtu.edu.cn">caesar01@sjtu.edu.cn</a></li>
+          <li>Website: <a href="https://lunbingchen.github.io">lunbingchen.github.io</a></li>
+          <li>ResearchGate: <a href="https://www.researchgate.net/profile/Lunbing_Chen">Lunbing Chen</a></li>
+          <li>GitHub: <a href="https://github.com/lunbingchen">github.com/lunbingchen</a></li>
+          <li>LinkedIn: <a href="https://www.linkedin.com/in/lunbing-chen-7ba91b392/">Lunbing Chen</a></li>
+        </ul>
+      </section>
+
+      <div class="footer">
+        © 2026 Lunbing Chen. Last updated: May 2026.
+        <br />
+        Built with plain HTML and CSS. Hosted on GitHub Pages.
+      </div>
+    </main>
+  </div>
 </body>
 </html>
