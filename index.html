@@ -4,13 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Lunbing Chen | Dynamic Soaring and Autonomous Flight</title>
+  <title>Lunbing Chen | Bio-inspired Flight and Dynamic Soaring</title>
 
-  <meta name="description" content="Lunbing Chen is a Ph.D. candidate at Shanghai Jiao Tong University developing closed-loop dynamic soaring, environmental-energy flight intelligence, and autonomous fixed-wing aircraft." />
+  <meta name="description" content="Lunbing Chen is a Ph.D. candidate at Shanghai Jiao Tong University studying bio-inspired flight in complex environmental flows and closed-loop dynamic soaring." />
   <meta name="keywords" content="Lunbing Chen, dynamic soaring, environmental-energy flight, fixed-wing aircraft, reinforcement learning, bio-inspired flight, autonomous flight, Shanghai Jiao Tong University" />
   <meta name="author" content="Lunbing Chen" />
-  <meta property="og:title" content="Lunbing Chen | Dynamic Soaring and Autonomous Flight" />
-  <meta property="og:description" content="Closed-loop dynamic soaring, bio-inspired flight intelligence, and autonomous fixed-wing aircraft." />
+  <meta property="og:title" content="Lunbing Chen | Bio-inspired Flight and Dynamic Soaring" />
+  <meta property="og:description" content="Bio-inspired flight in complex environmental flows and closed-loop dynamic soaring." />
   <meta property="og:image" content="figures/Project_1_DS_inTheField.png" />
 
   <style>
@@ -225,10 +225,7 @@
     }
 
     .hero-layout {
-      display: grid;
-      grid-template-columns: minmax(0, 0.88fr) minmax(340px, 1.12fr);
-      align-items: center;
-      gap: 36px;
+      max-width: 900px;
     }
 
     .eyebrow {
@@ -255,33 +252,16 @@
       margin: 0 0 16px;
     }
 
-    .hero-figure {
-      margin: 0;
-      overflow: hidden;
-      border: 1px solid rgba(13, 63, 85, 0.16);
-      border-radius: 24px;
-      background: #0f1720;
-      box-shadow: var(--shadow);
-    }
-
-    .hero-figure img {
-      display: block;
-      width: 100%;
-      aspect-ratio: 1.47 / 1;
-      object-fit: cover;
-    }
-
-    .hero-figure figcaption {
-      padding: 11px 15px 13px;
-      color: #dfe9ef;
-      background: #102936;
-      font-size: 0.82rem;
-      line-height: 1.45;
-    }
-
     .highlight {
       color: var(--accent-dark);
       font-weight: 700;
+    }
+
+    .citation {
+      color: var(--accent);
+      font-size: 0.82em;
+      font-weight: 750;
+      white-space: nowrap;
     }
 
     .chips {
@@ -460,32 +440,6 @@
 
     .research-links a.primary-link:hover {
       background: var(--accent-dark);
-    }
-
-    .research-arc {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 12px;
-      margin: 24px 0 0;
-    }
-
-    .arc-step {
-      padding: 14px 15px;
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      background: rgba(255, 255, 255, 0.76);
-    }
-
-    .arc-step strong {
-      display: block;
-      margin-bottom: 3px;
-      color: var(--accent-dark);
-      font-size: 0.92rem;
-    }
-
-    .arc-step span {
-      color: var(--muted);
-      font-size: 0.86rem;
     }
 
     .grid {
@@ -672,20 +626,8 @@
         grid-template-columns: 1fr;
       }
 
-      .hero-layout {
-        grid-template-columns: 1fr;
-      }
-
-      .hero-figure {
-        max-width: 760px;
-      }
-
       .research-item {
         grid-template-columns: minmax(260px, 0.8fr) minmax(0, 1.2fr);
-      }
-
-      .research-arc {
-        grid-template-columns: 1fr;
       }
 
       .timeline-item {
@@ -787,7 +729,7 @@
       <p class="affiliation">J. C. Wu Center for Aerodynamics<br />Shanghai Jiao Tong University</p>
 
       <div class="tagline">
-        I develop closed-loop dynamic soaring for autonomous fixed-wing aircraft, connecting environmental-flow physics, local sensing, feedback decision-making, and real flight.
+        I study bio-inspired flight and dynamic soaring to understand how flyers exploit environmental flows for robust and energy-efficient flight.
       </div>
 
       <ul class="contact-list">
@@ -822,50 +764,28 @@
       <header class="hero" id="about">
         <div class="hero-layout">
           <div>
-            <div class="eyebrow">Environmental-energy flight</div>
-            <h1>Closed-loop dynamic soaring for autonomous aircraft.</h1>
+            <div class="eyebrow">Bio-inspired flight · Dynamic soaring</div>
+            <h1>Flight intelligence in complex environmental flows.</h1>
             <p>
-              I am a Ph.D. candidate in aeronautics and astronautics at
-              <span class="highlight">Shanghai Jiao Tong University</span>.
-              I study how fixed-wing aircraft can sense and exploit energy in environmental flows for efficient, target-directed, and robust flight.
+              I am a Ph.D. candidate at the <span class="highlight">J. C. Wu Center for Aerodynamics, Shanghai Jiao Tong University</span>.
+              My research focuses on bio-inspired flight in complex environmental flows and closed-loop dynamic soaring.
+              I combine unsteady aerodynamics, animal flight, reinforcement learning, and autonomous aircraft systems to understand how flyers exploit environmental flows for robust and energy-efficient flight.
+              My first-author research has been published in <em>iScience</em> <a class="citation" href="#pub-1" aria-label="See publication 1">[1]</a> and the <em>Journal of Fluid Mechanics</em> <a class="citation" href="#pub-4" aria-label="See publication 4">[4]</a>, with manuscripts under review at <em>Nature Communications</em> <a class="citation" href="#pub-2" aria-label="See publication 2">[2]</a> and <em>Cell Reports Physical Science</em> <a class="citation" href="#pub-3" aria-label="See publication 3">[3]</a>.
             </p>
             <p>
-              My work links dynamic-soaring mechanics, bio-inspired flight principles,
-              step-level feedback decision-making, and aircraft implementation. Fluid mechanics provides the physical foundation; the goal is an autonomous flight system that works in the field.
+              My current thesis develops dynamic soaring as a feedback-driven energy-harvesting navigation problem, connecting passive flow mechanisms, biological flight strategies, step-level feedback decision-making, and closed-loop flight implementation.
             </p>
 
             <div class="chips">
               <span class="chip">Dynamic soaring</span>
-              <span class="chip">Fixed-wing aircraft</span>
-              <span class="chip">Environmental sensing</span>
-              <span class="chip">Reinforcement learning</span>
               <span class="chip">Bio-inspired flight</span>
-              <span class="chip">Flight testing</span>
             </div>
           </div>
-
-          <figure class="hero-figure">
-            <img src="figures/Project_1_DS_inTheField.png" alt="Closed-loop dynamic-soaring trajectory, fixed-wing aircraft platform, and outdoor flight test" fetchpriority="high" />
-            <figcaption>
-              From feedback principles to hardware: a closed-loop dynamic-soaring trajectory, the fixed-wing research aircraft, and outdoor flight testing.
-            </figcaption>
-          </figure>
         </div>
       </header>
 
       <section id="research">
-        <div class="section-kicker">Selected research</div>
-        <h2>From flow physics to autonomous flight</h2>
-
-        <p class="lead">
-          My research is organized around one question: how can an aircraft use local information to harvest environmental energy while still making reliable progress toward a destination? The projects below move from the core dynamic-soaring problem to feedback intelligence, physical robustness, and experimental realization.
-        </p>
-
-        <div class="research-arc" aria-label="Research arc">
-          <div class="arc-step"><strong>01 · Understand</strong><span>Reveal how environmental flows provide energy and impose disturbances.</span></div>
-          <div class="arc-step"><strong>02 · Decide</strong><span>Extract local feedback rules for energy-aware, target-directed flight.</span></div>
-          <div class="arc-step"><strong>03 · Fly</strong><span>Integrate sensing, control, and safety on a fixed-wing aircraft.</span></div>
-        </div>
+        <h2>Selected Research</h2>
 
         <div class="research-list">
           <article class="research-item">
@@ -909,6 +829,24 @@
                 <a class="primary-link" href="https://doi.org/10.48550/arXiv.2604.12413">Preprint · arXiv</a>
                 <a href="figures/Project_1_DS_RL.pdf">Full figure</a>
               </div>
+            </div>
+          </article>
+
+          <article class="research-item">
+            <div class="research-media">
+              <span class="media-label">Flight implementation</span>
+              <img src="figures/Project_1_DS_inTheField.png" alt="Closed-loop dynamic-soaring trajectory, fixed-wing aircraft platform, and outdoor flight test" loading="lazy" />
+            </div>
+            <div class="research-copy">
+              <h3>Closed-loop dynamic soaring in the field</h3>
+              <div class="project-meta">Autonomous aircraft · state estimation · flight control · system integration</div>
+              <p>
+                I am developing a fixed-wing research platform that turns dynamic soaring from a trajectory concept into a closed-loop flight system integrating environmental sensing, decision-making, control, and execution.
+              </p>
+              <ul>
+                <li>Built a perception-decision-execution architecture for wind-relative energy management.</li>
+                <li>Integrated onboard state estimation, step-level maneuver selection, attitude tracking, safety protection, and flight-mode switching.</li>
+              </ul>
             </div>
           </article>
 
@@ -1004,7 +942,7 @@
         <h3>First-author / Corresponding-author Publications</h3>
 
         <ol class="pub-list">
-          <li class="pub">
+          <li class="pub" id="pub-1">
             <div>
               <div class="pub-title">Optimal dynamic soaring trades off energy harvest and directional flight</div>
               <div class="pub-authors"><strong>Lunbing Chen</strong>, Yufei Yin, Yang Xiang, Suyang Qin, and Hong Liu</div>
@@ -1015,7 +953,7 @@
             </div>
           </li>
 
-          <li class="pub">
+          <li class="pub" id="pub-2">
             <div>
               <div class="pub-title">Learning step-level dynamic soaring in shear flow</div>
               <div class="pub-authors"><strong>Lunbing Chen</strong>, Jixin Lu, Yufei Yin, Jinpeng Huang, Yong Chen, Yang Xiang, and Hong Liu</div>
@@ -1026,18 +964,18 @@
             </div>
           </li>
 
-          <li class="pub">
+          <li class="pub" id="pub-3">
             <div>
               <div class="pub-title">Passive aerodynamic robustness reduces disturbance amplification in flight</div>
               <div class="pub-authors"><strong>Lunbing Chen</strong>, Suyang Qin, Qilin Wu, Jinpeng Huang, Yufei Yin, Yang Xiang, and Hong Liu</div>
-              <div class="pub-venue">Submitted to <em>Cell Reports Physical Science</em>, 2025. arXiv: 2507.14550.</div>
+              <div class="pub-venue">Under review at <em>Cell Reports Physical Science</em>, 2025. arXiv: 2507.14550.</div>
               <div class="pub-links">
                 <a class="small-link" href="https://doi.org/10.48550/arXiv.2507.14550">arXiv</a>
               </div>
             </div>
           </li>
 
-          <li class="pub">
+          <li class="pub" id="pub-4">
             <div>
               <div class="pub-title">On the load-shifting phenomenon of accelerating reconfigurable circular plates</div>
               <div class="pub-authors"><strong>Lunbing Chen</strong>, Zhuoqi Li, Qilin Wu, Yufei Yin, Yang Xiang, and Hong Liu</div>
