@@ -4,14 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Lunbing Chen | Bio-inspired Flight, Dynamic Soaring, and Vortex Dynamics</title>
+  <title>Lunbing Chen | Bio-inspired Flight, Dynamic Soaring, Aerodynamics, and Autonomous Flight</title>
 
-  <meta name="description" content="Lunbing Chen is a Ph.D. candidate at Shanghai Jiao Tong University studying bio-inspired flight, dynamic soaring, and vortex dynamics." />
-  <meta name="keywords" content="Lunbing Chen, bio-inspired flight, dynamic soaring, vortex dynamics, environmental-energy flight, fixed-wing aircraft, reinforcement learning, autonomous flight, Shanghai Jiao Tong University" />
+  <meta name="description" content="Lunbing Chen is a Ph.D. candidate at Shanghai Jiao Tong University working on bio-inspired flight, dynamic soaring, aerodynamics, and autonomous flight." />
+  <meta name="keywords" content="Lunbing Chen, bio-inspired flight, dynamic soaring, aerodynamics, autonomous flight, environmental-energy flight, fixed-wing aircraft, reinforcement learning, unsteady aerodynamics, Shanghai Jiao Tong University" />
   <meta name="author" content="Lunbing Chen" />
-  <meta property="og:title" content="Lunbing Chen | Bio-inspired Flight, Dynamic Soaring, and Vortex Dynamics" />
-  <meta property="og:description" content="Research in bio-inspired flight, dynamic soaring, and vortex dynamics." />
-  <meta property="og:image" content="figures/Project_1_DS_inTheField.png" />
+  <meta property="og:title" content="Lunbing Chen | Bio-inspired Flight, Dynamic Soaring, Aerodynamics, and Autonomous Flight" />
+  <meta property="og:description" content="Research in bio-inspired flight, dynamic soaring, aerodynamics, and autonomous flight." />
+  <meta property="og:image" content="figures/Project_DS_inTheField.png" />
 
   <style>
     :root {
@@ -24,6 +24,8 @@
       --accent-dark: #0d3f55;
       --accent-soft: #e7f3f6;
       --signal: #ee8b38;
+      --venue: #7d232d;
+      --honor: #915a0f;
       --card: #ffffff;
       --shadow: 0 18px 50px rgba(21, 54, 73, 0.11);
       --max-width: 1360px;
@@ -37,6 +39,7 @@
 
     html {
       scroll-behavior: smooth;
+      overflow-x: hidden;
     }
 
     body {
@@ -47,6 +50,7 @@
         radial-gradient(circle at 78% -5%, rgba(23, 107, 135, 0.08), transparent 28rem),
         var(--bg);
       line-height: 1.62;
+      overflow-x: hidden;
     }
 
     a {
@@ -57,6 +61,12 @@
     a:hover {
       color: var(--accent-dark);
       text-decoration: underline;
+    }
+
+    a:focus-visible {
+      outline: 3px solid rgba(238, 139, 56, 0.42);
+      outline-offset: 3px;
+      border-radius: 6px;
     }
 
     .page {
@@ -73,15 +83,19 @@
       position: sticky;
       top: 0;
       height: 100vh;
-      overflow-y: auto;
-      overscroll-behavior: contain;
-      scrollbar-gutter: stable;
+      overflow: hidden;
       align-self: start;
       background: rgba(255, 255, 255, 0.94);
     }
 
+    .identity {
+      width: 100%;
+    }
+
     main {
       padding: 34px 44px 72px;
+      width: 100%;
+      max-width: 100%;
       min-width: 0;
     }
 
@@ -125,119 +139,142 @@
 
     .role {
       text-align: center;
-      margin: 8px 0 0;
+      margin: 8px 0 6px;
       color: var(--muted);
       font-size: 0.98rem;
     }
 
     .affiliation {
       text-align: center;
-      margin: 6px 0 18px;
+      margin: 0;
       color: var(--muted);
       font-size: 0.94rem;
     }
 
-    .tagline {
-      margin: 18px 0 22px;
-      padding: 14px 14px;
-      background: var(--accent-soft);
-      border-radius: 14px;
-      color: #244864;
-      font-size: 0.94rem;
+    .sidebar-keywords {
+      margin: 22px 0 0;
+      padding: 14px 16px 15px;
+      border-left: 3px solid var(--accent);
+      border-radius: 10px;
+      background: var(--bg-soft);
+      text-align: left;
     }
 
-    .contact-list {
-      list-style: none;
-      padding: 0;
-      margin: 22px 0;
-      font-size: 0.95rem;
-    }
-
-    .contact-list li {
-      margin: 9px 0;
-      display: flex;
-      align-items: flex-start;
-      gap: 9px;
-      color: var(--muted);
-    }
-
-    .contact-list .icon {
-      width: 20px;
-      text-align: center;
+    .keywords-label {
       color: var(--accent);
-      flex: 0 0 20px;
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 0.11em;
+      text-transform: uppercase;
     }
 
-    .sidebar-buttons {
-      display: grid;
-      gap: 10px;
-      margin-top: 22px;
-    }
-
-    .button {
-      display: block;
-      text-align: center;
-      padding: 10px 12px;
-      border-radius: 999px;
-      border: 1px solid var(--line);
-      color: var(--accent-dark);
+    .sidebar-keywords ul {
+      list-style: none;
+      margin: 8px 0 0;
+      padding: 0;
+      color: #39485d;
+      font-size: 0.86rem;
       font-weight: 650;
+      line-height: 1.4;
+    }
+
+    .sidebar-keywords li + li {
+      margin-top: 5px;
+    }
+
+    .sidebar-email {
+      margin: 0;
+      color: var(--muted);
       font-size: 0.94rem;
-      background: #fff;
+      text-align: center;
     }
 
-    .button.primary {
-      color: #fff;
-      background: var(--accent);
-      border-color: var(--accent);
-    }
-
-    .button:hover {
-      text-decoration: none;
-      transform: translateY(-1px);
-      box-shadow: var(--shadow);
+    .sidebar-email a {
+      font: inherit;
     }
 
     nav {
       display: flex;
-      flex-wrap: wrap;
-      gap: 10px 18px;
-      padding-bottom: 18px;
-      margin-bottom: 20px;
-      border-bottom: 1px solid var(--line);
-      font-size: 0.96rem;
+      align-items: center;
+      gap: 4px;
+      margin: 0 0 24px;
+      padding: 7px;
+      border: 1px solid rgba(220, 228, 236, 0.92);
+      border-radius: 14px;
+      box-shadow: 0 8px 24px rgba(21, 54, 73, 0.07);
+      font-size: 0.9rem;
       position: sticky;
-      top: 0;
-      background: rgba(251, 252, 254, 0.94);
-      backdrop-filter: blur(8px);
-      z-index: 10;
+      top: 10px;
+      overflow-x: auto;
+      max-width: 100%;
+      scrollbar-width: none;
+      background: rgba(255, 255, 255, 0.91);
+      backdrop-filter: blur(14px);
+      z-index: 20;
+    }
+
+    nav::-webkit-scrollbar {
+      display: none;
+    }
+
+    .nav-label {
+      flex: 0 0 auto;
+      padding: 0 10px 0 7px;
+      margin-right: 3px;
+      border-right: 1px solid var(--line);
+      color: var(--accent-dark);
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
     }
 
     nav a {
+      position: relative;
+      flex: 0 0 auto;
+      padding: 7px 10px 8px;
+      border-radius: 9px;
       color: var(--muted);
-      font-weight: 650;
+      font-weight: 700;
+      transition: color 160ms ease, background 160ms ease;
     }
 
     nav a:hover {
       color: var(--accent);
       text-decoration: none;
+      background: var(--bg-soft);
+    }
+
+    nav a::after {
+      content: "";
+      position: absolute;
+      right: 10px;
+      bottom: 3px;
+      left: 10px;
+      height: 2px;
+      border-radius: 999px;
+      background: var(--signal);
+      transform: scaleX(0);
+      transition: transform 160ms ease;
+    }
+
+    nav a.active,
+    nav a[aria-current="location"] {
+      color: var(--accent-dark);
+      background: var(--accent-soft);
+    }
+
+    nav a.active::after,
+    nav a[aria-current="location"]::after {
+      transform: scaleX(1);
     }
 
     .hero {
-      padding: 26px 0 22px;
+      padding: 26px 0 8px;
     }
 
     .hero-layout {
       max-width: 900px;
-    }
-
-    .eyebrow {
-      margin: 0 0 14px;
-      color: var(--accent);
-      font-size: 0.78rem;
-      font-weight: 800;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
     }
 
     .hero h1 {
@@ -267,25 +304,13 @@
       white-space: nowrap;
     }
 
-    .chips {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 22px;
-    }
-
-    .chip {
-      background: var(--bg-soft);
-      border: 1px solid var(--line);
-      color: #39485d;
-      border-radius: 999px;
-      padding: 7px 11px;
-      font-size: 0.9rem;
-    }
-
     section {
       margin-top: 44px;
       scroll-margin-top: 80px;
+    }
+
+    .hero + section {
+      margin-top: 28px;
     }
 
     section h2 {
@@ -341,6 +366,13 @@
       border: 1px solid var(--line);
       border-radius: var(--radius);
       box-shadow: 0 12px 32px rgba(21, 54, 73, 0.065);
+      transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+    }
+
+    .research-item:hover {
+      transform: translateY(-2px);
+      border-color: rgba(23, 107, 135, 0.22);
+      box-shadow: 0 18px 42px rgba(21, 54, 73, 0.10);
     }
 
     .research-media {
@@ -522,6 +554,25 @@
       margin-top: 3px;
     }
 
+    .pub-venue em {
+      color: var(--venue);
+    }
+
+    .pub-note {
+      margin: 4px 0 12px 56px;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .honor {
+      color: var(--honor);
+      font-weight: 750;
+    }
+
+    .pub-list.continued {
+      counter-reset: pubs 7;
+    }
+
     .pub-links {
       display: flex;
       flex-wrap: wrap;
@@ -607,24 +658,59 @@
 
     @media (max-width: 920px) {
       .page {
-        grid-template-columns: 1fr;
+        grid-template-columns: minmax(0, 1fr);
+        width: 100%;
+        max-width: 100vw;
+        overflow: hidden;
       }
 
       aside {
         position: relative;
         height: auto;
         overflow: visible;
-        scrollbar-gutter: auto;
         border-right: none;
         border-bottom: 1px solid var(--line);
       }
 
+      .identity {
+        display: grid;
+        grid-template-columns: 120px minmax(0, 1fr);
+        align-items: center;
+        gap: 24px;
+        max-width: 560px;
+        margin: 0 auto;
+      }
+
+      .avatar {
+        width: 120px;
+        height: 120px;
+        margin: 0;
+      }
+
+      .name,
+      .role,
+      .affiliation {
+        text-align: left;
+      }
+
+      .sidebar-email {
+        text-align: left;
+      }
+
+      .sidebar-keywords {
+        text-align: left;
+      }
+
       main {
         padding: 26px 24px 60px;
+        max-width: 100vw;
+        overflow-x: hidden;
       }
 
       nav {
-        position: relative;
+        position: sticky;
+        top: 8px;
+        width: calc(100vw - 48px);
       }
 
       .grid {
@@ -651,8 +737,44 @@
         padding: 22px 18px 50px;
       }
 
+      nav {
+        width: calc(100vw - 36px);
+      }
+
       aside {
         padding: 28px 20px;
+      }
+
+      .identity {
+        grid-template-columns: 88px minmax(0, 1fr);
+        gap: 16px;
+      }
+
+      .avatar {
+        width: 88px;
+        height: 88px;
+        border-width: 3px;
+      }
+
+      .name {
+        font-size: 1.42rem;
+      }
+
+      .role {
+        margin-top: 4px;
+      }
+
+      .affiliation {
+        margin: 0;
+        font-size: 0.86rem;
+      }
+
+      .sidebar-email {
+        font-size: 0.86rem;
+      }
+
+      .nav-label {
+        display: none;
       }
 
       .pub {
@@ -700,7 +822,7 @@
     }
 
     @media print {
-      aside, nav, .sidebar-buttons {
+      aside, nav {
         display: none;
       }
 
@@ -721,46 +843,50 @@
         font-size: 11pt;
       }
     }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *, *::before, *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
   </style>
 </head>
 
 <body>
   <div class="page">
     <aside>
-      <img class="avatar" src="figures/CV.jpg" alt="Portrait of Lunbing Chen" width="170" height="170" />
-
-      <h1 class="name">Lunbing Chen</h1>
-      <p class="role">Ph.D. Candidate</p>
-      <p class="affiliation">
-        <a href="https://www.aero.sjtu.edu.cn/xygk/jgsz/xs/34">J. C. Wu Center for Aerodynamics</a><br />
-        <a href="https://en.sjtu.edu.cn/">Shanghai Jiao Tong University</a>
-      </p>
-
-      <div class="tagline">
-        I study bio-inspired flight, dynamic soaring, and vortex dynamics to understand how flyers exploit environmental flows for robust and energy-efficient flight.
-      </div>
-
-      <ul class="contact-list">
-        <li><span class="icon">📍</span><span>Shanghai, China</span></li>
-        <li><span class="icon">✉️</span><span><a href="mailto:caesar01@sjtu.edu.cn">caesar01@sjtu.edu.cn</a></span></li>
-        <li><span class="icon">🌐</span><span><a href="https://lunbingchen.github.io">lunbingchen.github.io</a></span></li>
-        <li><span class="icon">🔬</span><span><a href="https://www.researchgate.net/profile/Lunbing_Chen">ResearchGate</a></span></li>
-        <li><span class="icon">🎓</span><span><a href="https://scholar.google.com/citations?hl=en&amp;user=5Dr7pcwAAAAJ">Google Scholar</a></span></li>
-        <li><span class="icon">🧬</span><span><a href="https://orcid.org/0000-0002-0509-2771">ORCID</a></span></li>
-        <li><span class="icon">💻</span><span><a href="https://github.com/LunbingCHEN">GitHub</a></span></li>
-        <li><span class="icon">in</span><span><a href="https://www.linkedin.com/in/lunbing-chen-7ba91b392/">LinkedIn</a></span></li>
-      </ul>
-
-      <div class="sidebar-buttons">
-        <a class="button primary" href="assets/Lunbing_Chen_CV.pdf">Download CV</a>
-        <a class="button" href="#publications">Publications</a>
-        <a class="button" href="#research">Research</a>
+      <div class="identity">
+        <img class="avatar" src="figures/CV.jpg" alt="Portrait of Lunbing Chen" width="170" height="170" />
+        <div class="identity-copy">
+          <h1 class="name">Lunbing Chen</h1>
+          <p class="role">Ph.D. Candidate</p>
+          <p class="sidebar-email"><a href="mailto:caesar01@sjtu.edu.cn">caesar01@sjtu.edu.cn</a></p>
+          <p class="affiliation">
+            <a href="https://www.aero.sjtu.edu.cn/xygk/jgsz/xs/34">J. C. Wu Center for Aerodynamics</a><br />
+            <a href="https://en.sjtu.edu.cn/">Shanghai Jiao Tong University</a>
+          </p>
+          <div class="sidebar-keywords" aria-label="Research areas">
+            <div class="keywords-label">Research Keywords</div>
+            <ul>
+              <li>Bio-inspired Flight</li>
+              <li>Dynamic Soaring</li>
+              <li>Aerodynamics</li>
+              <li>Autonomous Flight</li>
+            </ul>
+          </div>
+        </div>
       </div>
     </aside>
 
     <main>
-      <nav>
-        <a href="#about">About</a>
+      <nav aria-label="On this page">
+        <span class="nav-label">On this page</span>
+        <a class="active" href="#about" aria-current="location">About</a>
         <a href="#research">Research</a>
         <a href="#publications">Publications</a>
         <a href="#education">Education</a>
@@ -772,23 +898,15 @@
       <header class="hero" id="about">
         <div class="hero-layout">
           <div>
-            <div class="eyebrow">Bio-inspired flight · Dynamic soaring · Vortex dynamics</div>
             <h1>Flight intelligence in complex environmental flows.</h1>
             <p>
               I am a Ph.D. candidate at the <a href="https://www.aero.sjtu.edu.cn/xygk/jgsz/xs/34">J. C. Wu Center for Aerodynamics</a> at <a href="https://en.sjtu.edu.cn/">Shanghai Jiao Tong University</a>.
-              My research focuses on <strong>bio-inspired flight, dynamic soaring, and vortex dynamics</strong> in complex environmental flows.
-              I combine unsteady aerodynamics, animal flight, reinforcement learning, and autonomous aircraft systems to understand how flyers exploit environmental flows for robust and energy-efficient flight.
-              My first-author research has been published in <em>iScience</em> <a class="citation" href="#pub-1" aria-label="See publication 1">[1]</a> and the <em>Journal of Fluid Mechanics</em> <a class="citation" href="#pub-4" aria-label="See publication 4">[4]</a>, with a manuscript under review at <em>Nature Communications</em> <a class="citation" href="#pub-2" aria-label="See publication 2">[2]</a> and another accepted by <em>Cell Reports Physical Science</em> <a class="citation" href="#pub-3" aria-label="See publication 3">[3]</a>.
+              My research spans <strong>bio-inspired flight, dynamic soaring, aerodynamics, and autonomous flight</strong>, with a focus on low-energy, long-endurance UAV flight in complex environmental flows.
+              My first-author work has been published in <em>iScience</em> <a class="citation" href="#pub-1" aria-label="See publication 1">[1]</a> and the <em>Journal of Fluid Mechanics</em> <a class="citation" href="#pub-2" aria-label="See publication 2">[2]</a>, with another study accepted for publication in <em>Cell Reports Physical Science</em> <a class="citation" href="#pub-3" aria-label="See publication 3">[3]</a> and a manuscript under external review at <em>Nature Communications</em> <a class="citation" href="#pub-4" aria-label="See publication 4">[4]</a>.
             </p>
             <p>
-              My current thesis develops dynamic soaring as a feedback-driven energy-harvesting navigation problem, connecting passive flow mechanisms, biological flight strategies, step-level feedback decision-making, and closed-loop flight implementation.
+              My doctoral research connects two complementary pathways: reducing energy expenditure through passive aerodynamic disturbance mitigation and harvesting atmospheric energy through closed-loop dynamic soaring. Across these problems, I combine unsteady aerodynamics, animal flight, reinforcement learning, and autonomous aircraft systems to connect physical mechanisms with flight implementation.
             </p>
-
-            <div class="chips">
-              <span class="chip">Bio-inspired flight</span>
-              <span class="chip">Dynamic soaring</span>
-              <span class="chip">Vortex dynamics</span>
-            </div>
           </div>
         </div>
       </header>
@@ -798,45 +916,45 @@
 
         <div class="research-list">
           <article class="research-item">
-            <a class="research-media" href="figures/Project_1_DS_tradeoff.pdf" aria-label="Open full dynamic-soaring trade-off figure">
+            <a class="research-media" href="figures/Project_DS_tradeoff.pdf" aria-label="Open full dynamic-soaring trade-off figure">
               <span class="media-label">Dynamic soaring</span>
-              <img src="figures/Project_1_DS_tradeoff.png" alt="Diagram showing the trade-off between energy harvesting and directional flight in dynamic soaring" loading="lazy" />
+              <img src="figures/Project_DS_tradeoff.png" alt="Diagram showing the trade-off between energy harvesting and directional flight in dynamic soaring" loading="lazy" />
             </a>
             <div class="research-copy">
               <h3>Energy harvest versus directional flight</h3>
-              <div class="project-meta">Flight mechanics · trajectory optimization · biological validation</div>
+              <div class="project-meta">3-DOF flight dynamics · direct collocation · IPOPT · flight-envelope analysis</div>
               <p>
-                Dynamic soaring is not only an energy-harvesting maneuver. A flyer must also move toward a destination, and the trajectories that maximize energy gain conflict with those that maximize directional progress.
+                I formulated a 3-DOF glider model and a direct-collocation optimal-control framework to treat dynamic soaring as both energy harvesting and directed navigation. The resulting flight envelopes quantify how harvested atmospheric energy must be allocated between sustained soaring and progress toward a destination.
               </p>
               <ul>
-                <li>Introduced directional flight as a co-equal objective of dynamic soaring.</li>
-                <li>Identified a step-selection strategy that alternates energy-harvest and directional-flight priorities.</li>
+                <li>Mapped the Pareto trade-off between energy extraction and directional speed across wind conditions.</li>
+                <li>Connected optimized trajectories with the step-selection behavior observed in soaring birds.</li>
               </ul>
               <div class="research-links">
                 <a class="primary-link" href="https://doi.org/10.1016/j.isci.2025.112540">Paper · iScience</a>
-                <a href="figures/Project_1_DS_tradeoff.pdf">Full figure</a>
+                <a href="figures/Project_DS_tradeoff.pdf">Full figure</a>
               </div>
             </div>
           </article>
 
           <article class="research-item">
-            <a class="research-media" href="figures/Project_1_DS_RL.pdf" aria-label="Open full step-level dynamic-soaring figure">
+            <a class="research-media" href="figures/Project_DS_RL.pdf" aria-label="Open full step-level dynamic-soaring figure">
               <span class="media-label">Feedback intelligence</span>
-              <img src="figures/Project_1_DS_RL.png" alt="Dynamic-soaring trajectories, aircraft states, reinforcement-learning framework, and success-rate maps" loading="lazy" />
+              <img src="figures/Project_DS_RL.png" alt="Dynamic-soaring trajectories, aircraft states, reinforcement-learning framework, and success-rate maps" loading="lazy" />
             </a>
             <div class="research-copy">
               <h3>Learning step-level dynamic soaring</h3>
-              <div class="project-meta">Local sensing · state feedback · deep reinforcement learning</div>
+              <div class="project-meta">Soft Actor–Critic · curriculum learning · observation/reward ablation · local sensing</div>
               <p>
-                I use reinforcement learning as a scientific tool to ask whether dynamic soaring requires explicit cycle-level planning. The learned policies show that robust omnidirectional navigation can emerge from step-level feedback using only local observations.
+                I built a continuous-control reinforcement-learning environment to test whether dynamic soaring requires explicit cycle-level planning. Maximum-entropy Soft Actor–Critic policies show that robust omnidirectional navigation can emerge from step-level state feedback using only local observations.
               </p>
               <ul>
-                <li>Recovered an interpretable control structure coordinating turning, vertical motion, and kinetic-energy management.</li>
-                <li>Demonstrated generalization across target directions, wind speeds, and shear-layer thicknesses.</li>
+                <li>Used curriculum learning and systematic observation/reward ablations to identify the sensing and feedback variables required for flight.</li>
+                <li>Recovered an interpretable policy coordinating turning, vertical motion, and kinetic-energy management across wind conditions.</li>
               </ul>
               <div class="research-links">
                 <a class="primary-link" href="https://doi.org/10.48550/arXiv.2604.12413">Preprint · arXiv</a>
-                <a href="figures/Project_1_DS_RL.pdf">Full figure</a>
+                <a href="figures/Project_DS_RL.pdf">Full figure</a>
               </div>
             </div>
           </article>
@@ -844,39 +962,39 @@
           <article class="research-item">
             <div class="research-media">
               <span class="media-label">Flight implementation</span>
-              <img src="figures/Project_1_DS_inTheField.png" alt="Closed-loop dynamic-soaring trajectory, fixed-wing aircraft platform, and outdoor flight test" loading="lazy" />
+              <img src="figures/Project_DS_inTheField.png" alt="Closed-loop dynamic-soaring trajectory, fixed-wing aircraft platform, and outdoor flight test" loading="lazy" />
             </div>
             <div class="research-copy">
               <h3>Closed-loop dynamic soaring in the field</h3>
-              <div class="project-meta">Autonomous aircraft · state estimation · flight control · system integration</div>
+              <div class="project-meta">PX4 · Gazebo · Raspberry Pi 5 · state estimation · flight control</div>
               <p>
-                I am developing a fixed-wing research platform that turns dynamic soaring from a trajectory concept into a closed-loop flight system integrating environmental sensing, decision-making, control, and execution.
+                I am developing a fixed-wing platform that turns dynamic soaring from an optimized trajectory into a closed-loop autonomous flight system. The modular architecture integrates onboard state and wind sensing, feedback decision-making, safety supervision, and real-time control execution.
               </p>
               <ul>
-                <li>Built a perception-decision-execution architecture for wind-relative energy management.</li>
-                <li>Integrated onboard state estimation, step-level maneuver selection, attitude tracking, safety protection, and flight-mode switching.</li>
+                <li>Built a Gazebo/PX4 simulation and embedded-integration workflow around a Raspberry Pi 5.</li>
+                <li>Conducted field flight tests and manual fixed-wing piloting for platform validation and controller development.</li>
               </ul>
             </div>
           </article>
 
           <article class="research-item">
-            <a class="research-media" href="figures/Project_1_passiveAerodynamic.pdf" aria-label="Open full passive aerodynamic robustness figure">
+            <a class="research-media" href="figures/Project_passive_CRPS.pdf" aria-label="Open full passive aerodynamic robustness figure">
               <span class="media-label">Robust flight</span>
-              <img src="figures/Project_1_passiveAerodynamic.png" alt="Bird flight in disturbed flow and wind-tunnel comparison of avian and engineered wings" loading="lazy" />
+              <img src="figures/Project_passive_CRPS.png" alt="Bird flight in disturbed flow and wind-tunnel comparison of avian and engineered wings" loading="lazy" />
             </a>
             <div class="research-copy">
               <h3>Passive aerodynamic robustness</h3>
-              <div class="project-meta">Avian wings · turbulence · stability · control demand</div>
+              <div class="project-meta">Wind-tunnel testing · grid-generated turbulence · SPIV · aerodynamic sensitivity</div>
               <p>
-                Before active control responds, the wing itself can limit how strongly flow disturbances are amplified. Compared with a planform-matched engineered wing, the avian wing shows lower aerodynamic sensitivity, smoother stall, and a broader passive stability envelope.
+                Before active control responds, wing morphology can limit how strongly environmental disturbances are amplified. I compared avian and planform-matched engineered wings using precision force measurements, hot-wire anemometry, multi-section SPIV, and flight-dynamic analysis.
               </p>
               <ul>
-                <li>Connected wing-level response gain to system-level flight stability.</li>
-                <li>Revealed an efficiency–robustness trade-off relevant to bird-scale aircraft design.</li>
+                <li>Quantified lower aerodynamic sensitivity, smoother stall, and a broader passive stability envelope for the avian wing.</li>
+                <li>Connected wing-level disturbance response to system-level stability and control demand.</li>
               </ul>
               <div class="research-links">
-                <a class="primary-link" href="https://doi.org/10.48550/arXiv.2507.14550">Accepted · CRPS</a>
-                <a href="figures/Project_1_passiveAerodynamic.pdf">Full figure</a>
+                <a class="primary-link" href="https://doi.org/10.48550/arXiv.2507.14550">Accepted · Cell Reports Physical Science</a>
+                <a href="figures/Project_passive_CRPS.pdf">Full figure</a>
               </div>
             </div>
           </article>
@@ -884,11 +1002,11 @@
           <article class="research-item">
             <div class="research-media">
               <span class="media-label">Experimental platform</span>
-              <img src="figures/Project_2_passiveFlappingDevice.png" alt="Concept, CAD model, and wind-tunnel prototype of a passive and motor-driven flapping-wing device" loading="lazy" />
+              <img src="figures/Project_passive_flappingDevice.png" alt="Concept, CAD model, and wind-tunnel prototype of a passive and motor-driven flapping-wing device" loading="lazy" />
             </div>
             <div class="research-copy">
               <h3>Passive-first flapping mechanics</h3>
-              <div class="project-meta">Robotic model · compliant mechanism · wind-tunnel testing</div>
+              <div class="project-meta">Robotic model · compliant mechanism · active–passive comparison · wind-tunnel testing</div>
               <p>
                 I develop robotic model systems that separate passive structural response from prescribed actuation. The platform switches between motor-driven and spring-driven flapping, enabling controlled studies of how compliance reshapes loads and motion.
               </p>
@@ -900,45 +1018,45 @@
           </article>
 
           <article class="research-item">
-            <a class="research-media" href="figures/Project_3_reconfigurablePlate.pdf" aria-label="Open full reconfigurable-plate experimental figure">
+            <a class="research-media" href="figures/Project_vortex_reconfigurablePlate.pdf" aria-label="Open full reconfigurable-plate experimental figure">
               <span class="media-label">Load regulation</span>
-              <img src="figures/Project_3_reconfigurablePlate.png" alt="Experimental setup for force and PIV measurements of accelerating reconfigurable circular plates" loading="lazy" />
+              <img src="figures/Project_vortex_reconfigurablePlate.png" alt="Experimental setup for force and PIV measurements of accelerating reconfigurable circular plates" loading="lazy" />
             </a>
             <div class="research-copy">
               <h3>Load shifting in reconfigurable structures</h3>
-              <div class="project-meta">Flow–structure interaction · PIV · vortex dynamics · low-order modeling</div>
+              <div class="project-meta">Flow–structure interaction · time-resolved PIV · force decomposition · low-order modeling</div>
               <p>
-                Flexible plates do not simply reduce force. Within a specific stiffness regime, they shift load from the acceleration peak into the post-peak trough, reducing fluctuations without sacrificing mean force.
+                I used programmable towing-tank experiments, precision force measurements, high-speed imaging, and time-resolved multi-plane PIV to determine how passive reconfiguration redistributes transient aerodynamic loads.
               </p>
               <ul>
-                <li>Combined high-resolution force measurement with time-resolved PIV.</li>
-                <li>Linked load shifting to the radial vorticity distribution, non-axisymmetric vortex rings, and vortex breakdown.</li>
+                <li>Identified a stiffness regime that shifts load from the acceleration peak into the post-peak trough without sacrificing mean force.</li>
+                <li>Linked load shifting to radial vorticity redistribution, non-axisymmetric vortex rings, and vortex breakdown.</li>
               </ul>
               <div class="research-links">
                 <a class="primary-link" href="https://doi.org/10.1017/jfm.2026.11165">Paper · JFM</a>
-                <a href="figures/Project_3_reconfigurablePlate.pdf">Full figure</a>
+                <a href="figures/Project_vortex_reconfigurablePlate.pdf">Full figure</a>
               </div>
             </div>
           </article>
 
           <article class="research-item">
-            <a class="research-media" href="figures/Project_4_flowVisualization.pdf" aria-label="Open full goose takeoff flow-visualization figure">
+            <a class="research-media" href="figures/Project_takeoff_flowVisualization.pdf" aria-label="Open full goose takeoff flow-visualization figure">
               <span class="media-label">Biological flight</span>
-              <img src="figures/Project_4_flowVisualization.png" alt="Goose stationary-takeoff wing kinematics and high-speed flow visualization" loading="lazy" />
+              <img src="figures/Project_takeoff_flowVisualization.png" alt="Goose stationary-takeoff wing kinematics and high-speed flow visualization" loading="lazy" />
             </a>
             <div class="research-copy">
               <h3>How geese achieve stationary takeoff</h3>
-              <div class="project-meta">Animal flight · wing kinematics · wake capture · flow visualization</div>
+              <div class="project-meta">Live-animal flight · wing kinematics · laser-sheet visualization · high-speed imaging</div>
               <p>
                 Analysis of 578 stationary takeoffs shows that complex goose-wing motion collapses onto a low-dimensional structure. Accelerated downstroke, wake capture, and rapid tip reversal work together to produce the vertical and horizontal forces required for takeoff.
               </p>
               <ul>
-                <li>Combined live-bird kinematics, force reconstruction, mass modeling, and flow visualization.</li>
+                <li>Combined live-bird kinematics, force reconstruction, mass modeling, and evolving-wake visualization.</li>
                 <li>Translated biological wing strategies into mechanisms relevant to agile aircraft.</li>
               </ul>
               <div class="research-links">
                 <a class="primary-link" href="https://doi.org/10.48550/arXiv.2512.20894">Preprint · arXiv</a>
-                <a href="figures/Project_4_flowVisualization.pdf">Full figure</a>
+                <a href="figures/Project_takeoff_flowVisualization.pdf">Full figure</a>
               </div>
             </div>
           </article>
@@ -949,6 +1067,7 @@
         <h2>Publications</h2>
 
         <h3>First-author / Corresponding-author Publications</h3>
+        <div class="pub-note"><sup>*</sup> Corresponding author</div>
 
         <ol class="pub-list">
           <li class="pub" id="pub-1">
@@ -964,28 +1083,6 @@
 
           <li class="pub" id="pub-2">
             <div>
-              <div class="pub-title">Learning step-level dynamic soaring in shear flow</div>
-              <div class="pub-authors"><strong>Lunbing Chen</strong>, Jixin Lu, Yufei Yin, Jinpeng Huang, Yong Chen, Yang Xiang, and Hong Liu</div>
-              <div class="pub-venue">Under external review at <em>Nature Communications</em>, 2026. arXiv: 2604.12413.</div>
-              <div class="pub-links">
-                <a class="small-link" href="https://doi.org/10.48550/arXiv.2604.12413">arXiv</a>
-              </div>
-            </div>
-          </li>
-
-          <li class="pub" id="pub-3">
-            <div>
-              <div class="pub-title">Passive aerodynamic robustness reduces disturbance amplification in flight</div>
-              <div class="pub-authors"><strong>Lunbing Chen</strong>, Suyang Qin, Qilin Wu, Jinpeng Huang, Yufei Yin, Yang Xiang, and Hong Liu</div>
-              <div class="pub-venue">Accepted by <em>Cell Reports Physical Science</em>, 2026. arXiv: 2507.14550.</div>
-              <div class="pub-links">
-                <a class="small-link" href="https://doi.org/10.48550/arXiv.2507.14550">arXiv</a>
-              </div>
-            </div>
-          </li>
-
-          <li class="pub" id="pub-4">
-            <div>
               <div class="pub-title">On the load-shifting phenomenon of accelerating reconfigurable circular plates</div>
               <div class="pub-authors"><strong>Lunbing Chen</strong>, Zhuoqi Li, Qilin Wu, Yufei Yin, Yang Xiang, and Hong Liu</div>
               <div class="pub-venue"><em>Journal of Fluid Mechanics</em> 1029, A8, 2026.</div>
@@ -995,23 +1092,45 @@
             </div>
           </li>
 
-          <li class="pub">
+          <li class="pub" id="pub-3">
+            <div>
+              <div class="pub-title">Reduced aerodynamic sensitivity enables disturbance-resilient flight</div>
+              <div class="pub-authors"><strong>Lunbing Chen</strong>, Suyang Qin, Qilin Wu, Jinpeng Huang, Yufei Yin, Yang Xiang, and Hong Liu</div>
+              <div class="pub-venue">Accepted for publication in <em>Cell Reports Physical Science</em>, 2026. arXiv: 2507.14550.</div>
+              <div class="pub-links">
+                <a class="small-link" href="https://doi.org/10.48550/arXiv.2507.14550">arXiv</a>
+              </div>
+            </div>
+          </li>
+
+          <li class="pub" id="pub-4">
+            <div>
+              <div class="pub-title">Learning step-level dynamic soaring in shear flow</div>
+              <div class="pub-authors"><strong>Lunbing Chen</strong>, Jixin Lu, Yufei Yin, Jinpeng Huang, Yong Chen, Yang Xiang, and Hong Liu</div>
+              <div class="pub-venue">Under external review at <em>Nature Communications</em>, 2026. arXiv: 2604.12413.</div>
+              <div class="pub-links">
+                <a class="small-link" href="https://doi.org/10.48550/arXiv.2604.12413">arXiv</a>
+              </div>
+            </div>
+          </li>
+
+          <li class="pub" id="pub-5">
             <div>
               <div class="pub-title">Static Geometric Configuration and Vortex Ring Reshaping Dominate the Load-shifting of Accelerating Plates</div>
-              <div class="pub-authors">Jinpeng Huang, Qilin Wu, <strong>Lunbing Chen*</strong>, Yang Xiang, and Hong Liu</div>
-              <div class="pub-venue">Submitted to <em>Physics of Fluids</em>, 2026. *Corresponding author.</div>
+              <div class="pub-authors">Jinpeng Huang, Qilin Wu, <strong>Lunbing Chen<sup>*</sup></strong>, Yang Xiang, and Hong Liu</div>
+              <div class="pub-venue">Under review at <em>Physics of Fluids</em>, 2026.</div>
             </div>
           </li>
 
-          <li class="pub">
+          <li class="pub" id="pub-6">
             <div>
               <div class="pub-title">Shape Independence and Aerodynamic Truncation Effect of Low-Aspect-Ratio Accelerating Plates</div>
-              <div class="pub-authors">Qilin Wu, <strong>Lunbing Chen*</strong>, Yang Xiang, and Hong Liu</div>
-              <div class="pub-venue">In preparation for <em>Physical Review Fluids</em>, 2026. *Corresponding author.</div>
+              <div class="pub-authors">Qilin Wu, <strong>Lunbing Chen<sup>*</sup></strong>, Yang Xiang, and Hong Liu</div>
+              <div class="pub-venue">In preparation for <em>Physical Review Fluids</em>, 2026.</div>
             </div>
           </li>
 
-          <li class="pub">
+          <li class="pub" id="pub-7">
             <div>
               <div class="pub-title">High-Dimensional Uncertainty Quantification of Thermochemical Ablation for C/C Throat Insert</div>
               <div class="pub-authors"><strong>Lunbing Chen</strong>, Na Sun, Linying Li, and Bin Zhang</div>
@@ -1025,7 +1144,7 @@
 
         <h3 style="margin-top: 30px;">Selected Co-authored Publications</h3>
 
-        <ol class="pub-list">
+        <ol class="pub-list continued" start="8">
           <li class="pub">
             <div>
               <div class="pub-title">Flight Envelope and Energy Equilibrium Strategy of Sailplanes to Perform Dynamic Soaring</div>
@@ -1063,7 +1182,7 @@
             <div>
               <div class="pub-title">Evolution and dynamics of vortex rings in a confined and asymmetric region</div>
               <div class="pub-authors">Yufei Yin, <strong>Lunbing Chen</strong>, Liwei Hu, Yang Xiang, Yumin Zhong, and Hong Liu</div>
-              <div class="pub-venue"><em>Physics of Fluids</em> 37.12, 2025. Editor's pick, Scilight.</div>
+              <div class="pub-venue"><em>Physics of Fluids</em> 37.12, 2025. <span class="honor">Editor's Pick, <em>Scilight</em></span>.</div>
               <div class="pub-links">
                 <a class="small-link" href="https://doi.org/10.1063/5.0304637">DOI</a>
               </div>
@@ -1084,21 +1203,21 @@
         <h2>Education</h2>
 
         <div class="timeline-item">
-          <div class="time">2022–Present</div>
+          <div class="time">Sep. 2022–Jun. 2027 (expected)</div>
           <div>
             <h3>Ph.D. Candidate, Shanghai Jiao Tong University</h3>
             <p>
               J. C. Wu Center for Aerodynamics, School of Aeronautics and Astronautics, Shanghai, China.
             </p>
             <p>
-              Dissertation topic: <em>Closed-loop Dynamic Soaring in Environmental Shear Flows: Mechanics and Bio-inspired Implementation</em>.
+              Dissertation topic: <em>Passive Disturbance Mitigation and Closed-loop Dynamic Soaring for Bio-inspired Long-endurance Flight in Environmental Flows</em>.
               Advisors: Prof. Yang Xiang and Prof. Hong Liu.
             </p>
           </div>
         </div>
 
         <div class="timeline-item">
-          <div class="time">2018–2022</div>
+          <div class="time">Sep. 2018–Jun. 2022</div>
           <div>
             <h3>B.Eng., Shanghai Jiao Tong University</h3>
             <p>
@@ -1113,33 +1232,28 @@
 
         <div class="skills">
           <div class="skill-row">
-            <div class="skill-title">Programming</div>
+            <div class="skill-title">UAV Systems and Flight Testing</div>
+            <div class="skill-text">PX4, Gazebo, Raspberry Pi 5, fixed-wing UAV integration, onboard sensing, manual piloting, field flight testing</div>
+          </div>
+
+          <div class="skill-row">
+            <div class="skill-title">Learning and Optimal Control</div>
+            <div class="skill-text">Soft Actor–Critic, curriculum learning, continuous-control simulation environments, direct collocation, IPOPT, trajectory optimization</div>
+          </div>
+
+          <div class="skill-row">
+            <div class="skill-title">Experimental Aerodynamics</div>
+            <div class="skill-text">Towing-tank and wind-tunnel experiments, grid-generated turbulence, precision force measurement, PIV/SPIV, hot-wire anemometry, laser-sheet smoke visualization, high-speed imaging</div>
+          </div>
+
+          <div class="skill-row">
+            <div class="skill-title">CFD and Flight Dynamics</div>
+            <div class="skill-text">ANSYS Fluent, OpenFOAM, 3/6-DOF flight dynamics, ODE integration, stability analysis, vorticity-moment and impulse methods, low-order modeling</div>
+          </div>
+
+          <div class="skill-row">
+            <div class="skill-title">Scientific Programming</div>
             <div class="skill-text">Python, MATLAB, Fortran, Java, LaTeX, Git</div>
-          </div>
-
-          <div class="skill-row">
-            <div class="skill-title">Numerical Modeling</div>
-            <div class="skill-text">ODE integration, direct collocation, trajectory optimization, nonlinear dynamics, low-order modeling</div>
-          </div>
-
-          <div class="skill-row">
-            <div class="skill-title">Machine Learning and Control</div>
-            <div class="skill-text">Deep reinforcement learning, Gym-style simulation environments, feedback policy analysis, autonomous control</div>
-          </div>
-
-          <div class="skill-row">
-            <div class="skill-title">Experimental Fluid Mechanics</div>
-            <div class="skill-text">Force measurement, towing-tank experiments, wind-tunnel experiments, PIV/SPIV, high-speed imaging</div>
-          </div>
-
-          <div class="skill-row">
-            <div class="skill-title">Aerodynamics and Flight Mechanics</div>
-            <div class="skill-text">3/6-DOF glider dynamics, stability analysis, unsteady aerodynamics</div>
-          </div>
-
-          <div class="skill-row">
-            <div class="skill-title">Data Analysis</div>
-            <div class="skill-text">Signal processing, uncertainty analysis, trajectory analysis, image processing, statistical visualization</div>
           </div>
         </div>
       </section>
@@ -1157,8 +1271,8 @@
         <h2>Contact</h2>
 
         <p>
-          I am interested in discussions and collaborations on dynamic soaring, fixed-wing autonomous flight,
-          environmental sensing, bio-inspired flight intelligence, and robust energy-harvesting flight systems.
+          I am interested in discussions and collaborations on bio-inspired flight, dynamic soaring, aerodynamics,
+          autonomous fixed-wing aircraft, and robust energy-harvesting flight in complex environmental flows.
         </p>
 
         <ul>
@@ -1173,11 +1287,81 @@
       </section>
 
       <div class="footer">
-        © 2026 Lunbing Chen. Last updated: August 2026.
+        © 2026 Lunbing Chen. Last updated: September 2026.
         <br />
         Built with plain HTML and CSS. Hosted on GitHub Pages.
       </div>
     </main>
   </div>
+
+  <script>
+    (() => {
+      const links = [...document.querySelectorAll('nav a[href^="#"]')];
+      const sections = links
+        .map((link) => document.querySelector(link.getAttribute('href')))
+        .filter(Boolean);
+      let activeId = null;
+
+      const setActiveSection = (id) => {
+        if (id === activeId) return;
+        activeId = id;
+
+        links.forEach((link) => {
+          const isActive = link.getAttribute('href') === `#${id}`;
+          link.classList.toggle('active', isActive);
+          if (isActive) {
+            link.setAttribute('aria-current', 'location');
+            const nav = link.closest('nav');
+            const linkStart = link.offsetLeft;
+            const linkEnd = linkStart + link.offsetWidth;
+            const visibleStart = nav.scrollLeft;
+            const visibleEnd = visibleStart + nav.clientWidth;
+
+            if (linkStart < visibleStart || linkEnd > visibleEnd) {
+              nav.scrollTo({
+                left: Math.max(0, linkStart - (nav.clientWidth - link.offsetWidth) / 2),
+                behavior: 'smooth'
+              });
+            }
+          } else {
+            link.removeAttribute('aria-current');
+          }
+        });
+      };
+
+      let ticking = false;
+      const updateActiveSection = () => {
+        const readingLine = window.scrollY + Math.min(window.innerHeight * 0.3, 260);
+        let current = sections[0];
+
+        sections.forEach((section) => {
+          if (section.offsetTop <= readingLine) current = section;
+        });
+
+        if (current) setActiveSection(current.id);
+        ticking = false;
+      };
+
+      window.addEventListener('scroll', () => {
+        if (!ticking) {
+          window.requestAnimationFrame(updateActiveSection);
+          ticking = true;
+        }
+      }, { passive: true });
+
+      window.addEventListener('resize', updateActiveSection);
+
+      const initialSection = window.location.hash
+        ? document.querySelector(window.location.hash)
+        : null;
+
+      if (initialSection) {
+        initialSection.scrollIntoView({ block: 'start' });
+        setActiveSection(initialSection.id);
+      } else {
+        updateActiveSection();
+      }
+    })();
+  </script>
 </body>
 </html>
