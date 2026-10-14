@@ -27,10 +27,10 @@
       --venue: #7d232d;
       --honor: #915a0f;
       --card: #ffffff;
-      --shadow: 0 18px 50px rgba(21, 54, 73, 0.11);
+      --shadow: 0 8px 24px rgba(21, 54, 73, 0.08);
       --max-width: 1360px;
       --sidebar-width: 292px;
-      --radius: 20px;
+      --radius: 10px;
     }
 
     * {
@@ -45,9 +45,7 @@
       margin: 0;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, "Noto Sans", sans-serif;
       color: var(--text);
-      background:
-        radial-gradient(circle at 78% -5%, rgba(23, 107, 135, 0.08), transparent 28rem),
-        var(--bg);
+      background: var(--bg);
       line-height: 1.62;
     }
 
@@ -86,7 +84,7 @@
       overflow: clip;
       align-self: start;
       z-index: 15;
-      background: rgba(255, 255, 255, 0.94);
+      background: #fff;
     }
 
     .identity {
@@ -110,7 +108,7 @@
       margin: 0 auto 22px;
       background: linear-gradient(135deg, #dbe9f6, #f3f7fb);
       border: 4px solid #fff;
-      box-shadow: 0 12px 32px rgba(13, 63, 85, 0.18);
+      box-shadow: 0 6px 18px rgba(13, 63, 85, 0.12);
     }
 
     .avatar-fallback {
@@ -154,10 +152,8 @@
 
     .sidebar-keywords {
       margin: 22px 0 0;
-      padding: 14px 16px 15px;
-      border-left: 3px solid var(--accent);
-      border-radius: 10px;
-      background: var(--bg-soft);
+      padding: 10px 0 10px 14px;
+      border-left: 2px solid var(--accent);
       text-align: left;
     }
 
@@ -197,20 +193,18 @@
     nav {
       display: flex;
       align-items: center;
-      gap: 4px;
-      margin: 0 0 24px;
-      padding: 7px;
-      border: 1px solid rgba(220, 228, 236, 0.92);
-      border-radius: 14px;
-      box-shadow: 0 8px 24px rgba(21, 54, 73, 0.07);
+      gap: 2px;
+      margin: 0 0 26px;
+      padding: 7px 0 9px;
+      border-bottom: 1px solid var(--line);
       font-size: 0.9rem;
       position: sticky;
-      top: 10px;
+      top: 0;
       overflow-x: auto;
       max-width: 100%;
       scrollbar-width: none;
-      background: rgba(255, 255, 255, 0.91);
-      backdrop-filter: blur(14px);
+      background: rgba(251, 252, 254, 0.96);
+      backdrop-filter: blur(10px);
       z-index: 20;
     }
 
@@ -234,7 +228,6 @@
       position: relative;
       flex: 0 0 auto;
       padding: 7px 10px 8px;
-      border-radius: 9px;
       color: var(--muted);
       font-weight: 700;
       transition: color 160ms ease, background 160ms ease;
@@ -243,7 +236,6 @@
     nav a:hover {
       color: var(--accent);
       text-decoration: none;
-      background: var(--bg-soft);
     }
 
     nav a::after {
@@ -262,7 +254,6 @@
     nav a.active,
     nav a[aria-current="location"] {
       color: var(--accent-dark);
-      background: var(--accent-soft);
     }
 
     nav a.active::after,
@@ -323,7 +314,7 @@
       color: var(--accent-dark);
       margin: 0 0 18px;
       padding-bottom: 10px;
-      border-bottom: 2px solid var(--line);
+      border-bottom: 1px solid var(--line);
     }
 
     section h3 {
@@ -358,26 +349,23 @@
 
     .research-list {
       display: grid;
-      gap: 24px;
+      gap: 18px;
       margin-top: 26px;
     }
 
     .research-item {
       display: grid;
       grid-template-columns: minmax(300px, 0.88fr) minmax(0, 1.12fr);
-      min-height: 300px;
+      min-height: 280px;
       overflow: hidden;
       background: var(--card);
       border: 1px solid var(--line);
       border-radius: var(--radius);
-      box-shadow: 0 12px 32px rgba(21, 54, 73, 0.065);
-      transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+      transition: border-color 160ms ease;
     }
 
     .research-item:hover {
-      transform: translateY(-2px);
       border-color: rgba(23, 107, 135, 0.22);
-      box-shadow: 0 18px 42px rgba(21, 54, 73, 0.10);
     }
 
     .research-media {
@@ -386,10 +374,8 @@
       align-items: center;
       justify-content: center;
       min-width: 0;
-      padding: 18px;
-      background:
-        linear-gradient(145deg, rgba(231, 243, 246, 0.86), rgba(242, 246, 250, 0.72)),
-        #f4f7fa;
+      padding: 16px;
+      background: #f4f7f9;
       border-right: 1px solid var(--line);
     }
 
@@ -398,15 +384,14 @@
       width: 100%;
       max-height: 330px;
       object-fit: contain;
-      border-radius: 10px;
-      background: #fff;
+      border-radius: 4px;
     }
 
     .research-copy {
       display: flex;
       flex-direction: column;
       justify-content: center;
-      padding: 28px 30px;
+      padding: 24px 26px;
     }
 
     .research-copy h3 {
@@ -441,30 +426,26 @@
     .research-links a {
       display: inline-flex;
       align-items: center;
-      min-height: 34px;
-      padding: 6px 11px;
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      background: var(--bg-soft);
-      color: var(--accent-dark);
+      min-height: 28px;
+      padding: 2px 0;
+      border-bottom: 1px solid rgba(23, 107, 135, 0.32);
+      color: var(--accent);
       font-size: 0.84rem;
       font-weight: 700;
     }
 
     .research-links a:hover {
+      border-color: var(--accent-dark);
+      color: var(--accent-dark);
       text-decoration: none;
-      background: var(--accent-soft);
-      border-color: rgba(23, 107, 135, 0.28);
     }
 
     .research-links a.primary-link {
-      color: #fff;
-      background: var(--accent);
-      border-color: var(--accent);
+      color: var(--accent);
     }
 
     .research-links a.primary-link:hover {
-      background: var(--accent-dark);
+      color: var(--accent-dark);
     }
 
     .grid {
@@ -478,7 +459,6 @@
       border: 1px solid var(--line);
       border-radius: var(--radius);
       padding: 18px 18px;
-      box-shadow: 0 6px 20px rgba(20, 40, 70, 0.045);
     }
 
     .card h3 {
@@ -534,6 +514,18 @@
       color: var(--text);
     }
 
+    .pub-title a {
+      color: inherit;
+      text-decoration: none;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 3px;
+    }
+
+    .pub-title a:hover {
+      color: var(--accent);
+      text-decoration: underline;
+    }
+
     .pub-authors {
       color: var(--muted);
       margin-top: 3px;
@@ -561,29 +553,6 @@
 
     .pub-list.continued {
       counter-reset: pubs 7;
-    }
-
-    .pub-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 8px;
-    }
-
-    .small-link {
-      display: inline-flex;
-      align-items: center;
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      padding: 4px 9px;
-      font-size: 0.84rem;
-      color: var(--accent-dark);
-      background: var(--bg-soft);
-    }
-
-    .small-link:hover {
-      text-decoration: none;
-      background: var(--accent-soft);
     }
 
     .timeline-item {
@@ -1049,45 +1018,33 @@
         <ol class="pub-list">
           <li class="pub" id="pub-1">
             <div>
-              <div class="pub-title">On the load-shifting phenomenon of accelerating reconfigurable circular plates</div>
+              <div class="pub-title"><a href="https://doi.org/10.1017/jfm.2026.11165">On the load-shifting phenomenon of accelerating reconfigurable circular plates</a></div>
               <div class="pub-authors"><strong>Lunbing Chen</strong>, Zhuoqi Li, Qilin Wu, Yufei Yin, Yang Xiang, and Hong Liu</div>
               <div class="pub-venue"><em>Journal of Fluid Mechanics</em> 1029, A8, 2026.</div>
-              <div class="pub-links">
-                <a class="small-link" href="https://doi.org/10.1017/jfm.2026.11165">DOI</a>
-              </div>
             </div>
           </li>
 
           <li class="pub" id="pub-2">
             <div>
-              <div class="pub-title">Passive aerodynamic robustness reduces disturbance amplification in flight</div>
+              <div class="pub-title"><a href="https://doi.org/10.1016/j.xcrp.2026.103581">Passive aerodynamic robustness reduces disturbance amplification in flight</a></div>
               <div class="pub-authors"><strong>Lunbing Chen</strong>, Suyang Qin, Qilin Wu, Jinpeng Huang, Yufei Yin, Yong Chen, Yang Xiang, and Hong Liu</div>
               <div class="pub-venue"><em>Cell Reports Physical Science</em> 7(10), 103581, 2026.</div>
-              <div class="pub-links">
-                <a class="small-link" href="https://doi.org/10.1016/j.xcrp.2026.103581">DOI</a>
-              </div>
             </div>
           </li>
 
           <li class="pub" id="pub-3">
             <div>
-              <div class="pub-title">Optimal dynamic soaring trades off energy harvest and directional flight</div>
+              <div class="pub-title"><a href="https://doi.org/10.1016/j.isci.2025.112540">Optimal dynamic soaring trades off energy harvest and directional flight</a></div>
               <div class="pub-authors"><strong>Lunbing Chen</strong>, Yufei Yin, Yang Xiang, Suyang Qin, and Hong Liu</div>
               <div class="pub-venue"><em>iScience</em> 28.6, 2025.</div>
-              <div class="pub-links">
-                <a class="small-link" href="https://doi.org/10.1016/j.isci.2025.112540">DOI</a>
-              </div>
             </div>
           </li>
 
           <li class="pub" id="pub-4">
             <div>
-              <div class="pub-title">Learning step-level dynamic soaring in shear flow</div>
+              <div class="pub-title"><a href="https://doi.org/10.48550/arXiv.2604.12413">Learning step-level dynamic soaring in shear flow</a></div>
               <div class="pub-authors"><strong>Lunbing Chen</strong>, Jixin Lu, Yufei Yin, Jinpeng Huang, Yong Chen, Yang Xiang, and Hong Liu</div>
               <div class="pub-venue">Under external review at <em>Nature Communications</em>, 2026. arXiv: 2604.12413.</div>
-              <div class="pub-links">
-                <a class="small-link" href="https://doi.org/10.48550/arXiv.2604.12413">arXiv</a>
-              </div>
             </div>
           </li>
 
@@ -1109,12 +1066,9 @@
 
           <li class="pub" id="pub-7">
             <div>
-              <div class="pub-title">High-Dimensional Uncertainty Quantification of Thermochemical Ablation for C/C Throat Insert</div>
+              <div class="pub-title"><a href="https://doi.org/10.13675/j.cnki.tjjs.200583">High-Dimensional Uncertainty Quantification of Thermochemical Ablation for C/C Throat Insert</a></div>
               <div class="pub-authors"><strong>Lunbing Chen</strong>, Na Sun, Linying Li, and Bin Zhang</div>
               <div class="pub-venue"><em>Journal of Propulsion Technology</em> 43.3, 266–275, 2022. In Chinese.</div>
-              <div class="pub-links">
-                <a class="small-link" href="https://doi.org/10.13675/j.cnki.tjjs.200583">DOI</a>
-              </div>
             </div>
           </li>
         </ol>
@@ -1124,45 +1078,33 @@
         <ol class="pub-list continued" start="8">
           <li class="pub">
             <div>
-              <div class="pub-title">Flight Envelope and Energy Equilibrium Strategy of Sailplanes to Perform Dynamic Soaring</div>
+              <div class="pub-title"><a href="https://doi.org/10.1007/978-981-96-2440-9_3">Flight Envelope and Energy Equilibrium Strategy of Sailplanes to Perform Dynamic Soaring</a></div>
               <div class="pub-authors">Yufei Yin, <strong>Lunbing Chen</strong>, Yang Xiang, Suyang Qin, and Hong Liu</div>
               <div class="pub-venue">International Conference on Aerospace System Science and Engineering, Springer, 2024.</div>
-              <div class="pub-links">
-                <a class="small-link" href="https://doi.org/10.1007/978-981-96-2440-9_3">DOI</a>
-              </div>
             </div>
           </li>
 
           <li class="pub">
             <div>
-              <div class="pub-title">Geese achieve stationary takeoff via synergistic wing kinematics and enhanced aerodynamics</div>
+              <div class="pub-title"><a href="https://doi.org/10.48550/arXiv.2512.20894">Geese achieve stationary takeoff via synergistic wing kinematics and enhanced aerodynamics</a></div>
               <div class="pub-authors">Jinpeng Huang, Yang Xiang, <strong>Lunbing Chen</strong>, Suyang Qin, Jixin Lu, Sen Ye, Xiaobin Huang, Yong Chen, and Hong Liu</div>
               <div class="pub-venue">Under review in <em>Science Advances</em>, 2025. arXiv: 2512.20894.</div>
-              <div class="pub-links">
-                <a class="small-link" href="https://doi.org/10.48550/arXiv.2512.20894">arXiv</a>
-              </div>
             </div>
           </li>
 
           <li class="pub">
             <div>
-              <div class="pub-title">Two independent mechanisms with distinct laws for the generation of drag force on accelerating plates</div>
+              <div class="pub-title"><a href="https://doi.org/10.1063/5.0227258">Two independent mechanisms with distinct laws for the generation of drag force on accelerating plates</a></div>
               <div class="pub-authors">Zhuoqi Li, <strong>Lunbing Chen</strong>, Yang Xiang, Hong Liu, and Fuxin Wang</div>
               <div class="pub-venue"><em>Physics of Fluids</em> 36.10, 2024.</div>
-              <div class="pub-links">
-                <a class="small-link" href="https://doi.org/10.1063/5.0227258">DOI</a>
-              </div>
             </div>
           </li>
 
           <li class="pub">
             <div>
-              <div class="pub-title">Evolution and dynamics of vortex rings in a confined and asymmetric region</div>
+              <div class="pub-title"><a href="https://doi.org/10.1063/5.0304637">Evolution and dynamics of vortex rings in a confined and asymmetric region</a></div>
               <div class="pub-authors">Yufei Yin, <strong>Lunbing Chen</strong>, Liwei Hu, Yang Xiang, Yumin Zhong, and Hong Liu</div>
               <div class="pub-venue"><em>Physics of Fluids</em> 37.12, 2025. <span class="honor">Editor's Pick, <em>Scilight</em></span>.</div>
-              <div class="pub-links">
-                <a class="small-link" href="https://doi.org/10.1063/5.0304637">DOI</a>
-              </div>
             </div>
           </li>
 
