@@ -387,6 +387,15 @@
       border-radius: 4px;
     }
 
+    .research-media iframe {
+      display: block;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      border: 0;
+      border-radius: 4px;
+      background: #0c1117;
+    }
+
     .research-copy {
       display: flex;
       flex-direction: column;
@@ -890,9 +899,15 @@
           </article>
 
           <article class="research-item">
-            <a class="research-media" href="figures/Project_DS_RL.pdf" aria-label="Open full step-level dynamic-soaring figure">
-              <img src="figures/Project_DS_RL.png" alt="Dynamic-soaring trajectories, aircraft states, reinforcement-learning framework, and success-rate maps" loading="lazy" />
-            </a>
+            <div class="research-media">
+              <iframe
+                src="https://www.youtube.com/embed/1WU8Nm8YxwY?rel=0"
+                title="Step-level dynamic soaring while tracking a moving target"
+                loading="lazy"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen></iframe>
+            </div>
             <div class="research-copy">
               <h3>Learning step-level dynamic soaring</h3>
               <div class="project-meta">Soft Actor–Critic · curriculum learning · observation/reward ablation · local sensing</div>
@@ -906,6 +921,7 @@
               <div class="research-links">
                 <a class="primary-link" href="https://doi.org/10.48550/arXiv.2604.12413">Nature Communications (Revision)</a>
                 <a href="https://lunbingchen.github.io/dynamic_soaring_rl/">Project website</a>
+                <a href="https://www.youtube.com/watch?v=1WU8Nm8YxwY">Watch video</a>
               </div>
             </div>
           </article>
