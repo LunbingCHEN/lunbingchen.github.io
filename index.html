@@ -904,22 +904,19 @@
 
         <div class="research-list">
           <article class="research-item">
-            <a class="research-media" href="figures/Project_DS_tradeoff.pdf" aria-label="Open full dynamic-soaring trade-off figure">
-              <img src="figures/Project_DS_tradeoff.png" alt="Diagram showing the trade-off between energy harvesting and directional flight in dynamic soaring" loading="lazy" />
-            </a>
+            <div class="research-media">
+              <img src="figures/Project_DS_inTheField.png" alt="Closed-loop dynamic-soaring trajectory, fixed-wing aircraft platform, and outdoor flight test" loading="lazy" />
+            </div>
             <div class="research-copy">
-              <h3>Energy harvest versus directional flight</h3>
-              <div class="project-meta">3-DOF flight dynamics · direct collocation · IPOPT · flight-envelope analysis</div>
+              <h3>Closed-loop dynamic soaring in the field</h3>
+              <div class="project-meta">PX4 · Gazebo · Raspberry Pi 5 · state estimation · flight control</div>
               <p>
-                I formulated a 3-DOF glider model and a direct-collocation optimal-control framework to treat dynamic soaring as both energy harvesting and directed navigation. The resulting flight envelopes quantify how harvested atmospheric energy must be allocated between sustained soaring and progress toward a destination.
+                I am developing a fixed-wing platform that turns dynamic soaring from an optimized trajectory into a closed-loop autonomous flight system. The modular architecture integrates onboard state and wind sensing, feedback decision-making, safety supervision, and real-time control execution.
               </p>
               <ul>
-                <li>Mapped the Pareto trade-off between energy extraction and directional speed across wind conditions.</li>
-                <li>Connected optimized trajectories with the step-selection behavior observed in soaring birds.</li>
+                <li>Built a Gazebo/PX4 simulation and embedded-integration workflow around a Raspberry Pi 5.</li>
+                <li>Conducted field flight tests and manual fixed-wing piloting for platform validation and controller development.</li>
               </ul>
-              <div class="research-links">
-                <a class="primary-link" href="https://doi.org/10.1016/j.isci.2025.112540">iScience</a>
-              </div>
             </div>
           </article>
 
@@ -945,19 +942,22 @@
           </article>
 
           <article class="research-item">
-            <div class="research-media">
-              <img src="figures/Project_DS_inTheField.png" alt="Closed-loop dynamic-soaring trajectory, fixed-wing aircraft platform, and outdoor flight test" loading="lazy" />
-            </div>
+            <a class="research-media" href="figures/Project_DS_tradeoff.pdf" aria-label="Open full dynamic-soaring trade-off figure">
+              <img src="figures/Project_DS_tradeoff.png" alt="Diagram showing the trade-off between energy harvesting and directional flight in dynamic soaring" loading="lazy" />
+            </a>
             <div class="research-copy">
-              <h3>Closed-loop dynamic soaring in the field</h3>
-              <div class="project-meta">PX4 · Gazebo · Raspberry Pi 5 · state estimation · flight control</div>
+              <h3>Energy harvest versus directional flight</h3>
+              <div class="project-meta">3-DOF flight dynamics · direct collocation · IPOPT · flight-envelope analysis</div>
               <p>
-                I am developing a fixed-wing platform that turns dynamic soaring from an optimized trajectory into a closed-loop autonomous flight system. The modular architecture integrates onboard state and wind sensing, feedback decision-making, safety supervision, and real-time control execution.
+                I formulated a 3-DOF glider model and a direct-collocation optimal-control framework to treat dynamic soaring as both energy harvesting and directed navigation. The resulting flight envelopes quantify how harvested atmospheric energy must be allocated between sustained soaring and progress toward a destination.
               </p>
               <ul>
-                <li>Built a Gazebo/PX4 simulation and embedded-integration workflow around a Raspberry Pi 5.</li>
-                <li>Conducted field flight tests and manual fixed-wing piloting for platform validation and controller development.</li>
+                <li>Mapped the Pareto trade-off between energy extraction and directional speed across wind conditions.</li>
+                <li>Connected optimized trajectories with the step-selection behavior observed in soaring birds.</li>
               </ul>
+              <div class="research-links">
+                <a class="primary-link" href="https://doi.org/10.1016/j.isci.2025.112540">iScience</a>
+              </div>
             </div>
           </article>
 
