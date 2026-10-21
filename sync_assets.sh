@@ -3,17 +3,21 @@ set -eu
 
 SCRIPT_DIR=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
 SHARED_DIR="$SCRIPT_DIR/../../_shared_assets/projects"
-CV_PDF="$SCRIPT_DIR/../CV/.latex-build/main.pdf"
+CV_PDF="$SCRIPT_DIR/../CV_en/.latex-build/main.pdf"
 
 if [ ! -f "$CV_PDF" ]; then
   echo "Missing CV build: $CV_PDF" >&2
-  echo "Run 'latexmk main.tex' in CV/CV first." >&2
+  echo "Run 'latexmk main.tex' in CV/CV_en first." >&2
   exit 1
 fi
 
 mkdir -p "$SCRIPT_DIR/assets" "$SCRIPT_DIR/figures"
 
 cp "$CV_PDF" "$SCRIPT_DIR/assets/Lunbing_Chen_CV.pdf"
+if [ "${1:-}" = "--cv-only" ]; then
+  echo "Website CV synchronized."
+  exit 0
+fi
 cp "$SHARED_DIR/Project_DS_RL.pdf" "$SCRIPT_DIR/figures/Project_DS_RL.pdf"
 cp "$SHARED_DIR/Project_DS_RL.png" "$SCRIPT_DIR/figures/Project_DS_RL.png"
 cp "$SHARED_DIR/Project_DS_inTheField.png" "$SCRIPT_DIR/figures/Project_DS_inTheField.png"
